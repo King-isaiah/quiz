@@ -1,0 +1,402 @@
+.icon-image{
+    background-color: white;
+}
+#white{
+    color: white;
+}
+.nav li a.actives {
+    margin-top: 1em;
+    /* background: azure; */
+    border-radius: 12px;
+    /* color: white;  */
+    font-weight: bold; /* Make font bold */
+    font-size: 18px;
+    justify-content: space-between;
+    box-shadow: 0px 11px 14px 2px lightblue;
+    overflow: visible;
+}
+.dashboard-front-view{
+    margin: 1em 5em;
+}
+.margin{
+    margin-right:16em;
+    margin-left:3em;
+}
+.info{
+    background-image: url('../img/walper.jpg');
+    height: 30vh;
+    background-size: cover; 
+    background-repeat: no-repeat;
+    border-radius: 10px; 
+    padding-top: 0.5em;
+    position: relative;
+    padding-top: 40px; 
+}
+
+.text{
+    background-color: gray;
+    height: 13vh;
+    margin-top: 6em;
+    border-radius: 0 0 12px 12px;
+    display: flex;
+    position: relative; 
+    z-index: 0; 
+}
+
+
+
+.avatar {
+    position: absolute;   
+    transform: translate(-30%, -50%); 
+    margin-left: 2em;
+    width: 150px; 
+    height: 150px;    
+    z-index: 1; 
+}
+.btn1{
+    background-color: rgb(94, 205, 50);
+    height: 3em;
+    border-radius: 12px;
+    border: none;
+}
+.textdiv{
+    display: flex;
+    justify-content:end;
+    margin-left:3em;
+    margin-top: 1em;
+       
+}
+.dashboardThird{
+    padding: 1em 3em;
+    margin-top: 2em;
+
+}
+.top{
+    padding: 0 7em;
+    align-content: center;
+}
+.top h6{
+    padding: 2em 0 1em 9em;
+}
+.bottom{
+    margin-top: 2em; 
+    justify-content: space-between;
+    display: flex;
+    padding: 1em 0;
+}
+.icon{
+    margin-left: 1.5em ;    
+}
+.icon i{
+    font-size: 74px;
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+}
+.image-countdown{
+    height: 85vh;
+    /* margin: 1em 1em;  */
+    background-image: url('../img/bookFlipping.jpg') ;
+    background-size: cover; 
+    background-repeat: no-repeat;
+    border-radius: 10px; 
+    opacity: 0.9;
+    transition: opacity 0.5s ease;
+    /* padding-top: 0.5em; */
+    position: relative;
+    /* padding-top: 40px;  */
+
+}
+.image-countdown h1{
+    margin-left: 3em;
+}
+
+#countdown {
+    font-size: 2rem;
+    font-weight: bold;
+    color: green; 
+    opacity: 1;
+    margin : 2em 0 2em 9em
+}
+.book-header{
+    height: 40vh;
+    padding: 0 20em;   
+    margin-bottom: 1em;
+}
+
+.book-header img{
+    height: 40vh;
+    width:200px;
+    margin-left: 7em
+}
+.summary-container{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+}
+.book-content{
+    height: 45vh;
+}
+.summary{
+    padding: 1em;
+    border-radius: 12px;
+    line-height: normal;
+}
+.summary h4 {
+    margin: 0; /* Remove default margin */
+    padding-bottom: 5px; /* Space between text and line */
+    border-bottom: 2px solid gainsboro;
+}
+.settings-front-view{
+    margin: 1em 4em;
+    background:	#E2DFD2;
+    padding: 2em;
+    border-radius: 12px;
+    padding: 1em;
+}
+.profile {
+    position: relative;      
+    width: 150px; 
+    height: 150px;  
+}
+.profileHeader {      
+    max-width: 50px;
+    height: 30px;  
+}
+
+.profile-icon {
+    position: absolute; 
+    top: 225px; /* Adjust this value to position the icon vertically */
+    left: 520px; /* Adjust this value to position the icon horizontally */
+    z-index: 1; 
+    width: 30px; 
+    height: 30px; 
+    cursor: pointer;
+    background-color: white;
+    display: flex; /* Center the icon */
+    justify-content: center;
+    align-items: center;
+}
+.unknown-div{
+    margin-left:3em; 
+    margin-right:5em;  
+    margin-bottom: 2em;     
+}
+.input-div{
+    width:100%;
+    display:flex; 
+    flex-direction:row;
+    padding:15px; 
+    align-items:center
+}
+.input-bundle{
+    width:70%;
+    display:flex;
+    flex-direction:column;
+    padding:15px;
+    align-items:center
+}
+.bundle{
+    border-radius: 12px;
+    background: gray;
+    width:80px;
+    height: 30px;
+    border: none;
+    color:white
+}
+.bundle-left{
+    margin-right: 150px;
+}
+.button input {
+    margin-top: 13px;
+    margin-left: 20em;
+    height: 45px;
+    border: none;
+    font-size: 17px;
+    font-weight: 400;
+    background: #1bd01e;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.lumos{
+    max-width: 2em;
+    height: 1.5em;
+}
+#exam_inventory{
+    font-size: 12px;
+}
+.menu-icons{
+    font-size: 10px;
+}
+
+@media (max-width: 470px) {
+    .book-header{
+        height: 15vh;   
+        padding: 0 0 0 0;  
+        width: 100%;
+    }
+    .book-header img{
+        height: 15vh;
+        width:120px;
+        padding-right:7em;
+        padding-left: 0px;
+        margin-left: 0px;
+    
+    }
+    .dashboard-front-view{
+        margin: 0 2em;
+    }
+    .summary h6 {
+        font-size: 4px
+    }
+    .summary h4 {
+        font-size: 7px
+    }
+    .profile-icon {        
+        top: 20px; /* Adjust this value to position the icon vertically */
+        left: 20em;         
+    }
+   
+}
+@media (max-width: 800px) {
+    .menu-icons{
+        font-size: 17em;
+    }
+}
+@media (max-width: 910px) {
+    #exam_inventory{
+        font-size: 10px;
+    }
+    .bundle-left{
+        margin-right: 40px;
+    }
+    .dashboard-front-view{
+        margin: 0 2em;
+    }
+    .admin-name {
+        font-size: 10px;
+        color: red;
+        
+    }
+    .info{       
+        height: 29vh;       
+        border-radius: 10px;         
+        padding-top: 50px; 
+       
+    }
+    .text{
+        height: 11vh;
+        margin-top: 5.2em;
+             
+    }
+    .text h3{
+        font-size: 14px; 
+        margin-left: 0;
+    }
+    .btn1{
+        /* display: none; */
+        height: 2em;
+        margin-left: 6em;
+        width: 4em;
+    }
+    .btn1 a{
+        font-size: 10px;
+    }
+    .avatar {     
+        margin-left: 2em;
+        width: 100px; 
+        height: 100px;  
+    }
+    .margin{
+        margin-right:0;
+    }
+    .top h1 {
+        font-size: 15px;    
+    }
+    .top{        
+        padding: 0 3em;        
+    }
+    .top h6{
+        padding: 0 2rem ;
+        font-size: 9px; 
+    }
+    .bottom{
+        margin-top: 1em; 
+        padding: 1em 0;
+    }
+    .icon i{
+        font-size: 34px;
+        padding-left: 0;
+        margin-bottom: 2rem;
+    }
+    .icon h5{
+        padding: 0 ;
+        font-size: 12px;
+    }
+    .dashboardThird{
+        padding: 1em 2em;
+        margin-top: 2em;    
+    }
+
+    .book-header{
+        height: 35vh;
+        padding: 0 5em;     
+    }
+    .book-header img{
+        height: 35vh;
+        width:150px;
+        margin-left:6em;
+    }
+    .summary h6 {
+        font-size: 7px
+    }
+    .summary h4 {
+        font-size: 10px
+    }
+    .image-countdown{
+        height: 60vh;
+        margin: 1em 1em;        
+        border-radius: 10px; 
+        opacity: 0.9;       
+    
+    }
+    .image-countdown h1{
+        font-size: 20px;
+        margin-left: 2em;
+    }
+    #countdown {
+        font-size: 20px;
+        font-weight: bold;
+        padding-left: 4em;
+        color: black; 
+        /* opacity: 1; */
+        margin : 2px 0 2px 3px;
+    }
+    .settings-front-view{
+        margin: 1em 2em;    
+        padding: 5px;
+       
+    }
+    .profile-icon {        
+        top: 170px; 
+        left: 280px;         
+    }
+    .profile {      
+        width: 100px; 
+        height: 100px;  
+    }
+    .unknown-div{
+        margin-left:1em; 
+        margin-right:3em;       
+    }
+    .button input {
+        margin-top: 13px;
+        margin-left: 10em;
+        height: 45px;
+        
+        font-size: 17px;
+        font-weight: 400;
+       
+      
+    }
+}

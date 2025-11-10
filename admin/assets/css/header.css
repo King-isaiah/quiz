@@ -1,0 +1,436 @@
+/* ===== PAGINATION STYLES ===== */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.pagination a {
+    padding: 8px 12px;
+    margin: 0 4px;
+    text-decoration: none;
+    color: black;
+    border: 1px solid #ddd;
+}
+
+.pagination a.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.pagination a:hover {
+    background-color: #ddd;
+}
+
+/* ===== CUSTOM PAGINATION STYLES (for our reusable components) ===== */
+.custom-pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.custom-pagination .page-item {
+    list-style: none;
+}
+
+.custom-pagination .page-item .page-link {
+    padding: 8px 12px;
+    margin: 0 4px;
+    text-decoration: none;
+    color: black;
+    border: 1px solid #ddd;
+    background: white;
+    display: block;
+    border-radius: 4px;
+}
+
+.custom-pagination .page-item.active .page-link {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.custom-pagination .page-link:hover {
+    background-color: #ddd;
+    text-decoration: none;
+}
+
+.custom-pagination .page-item.disabled .page-link {
+    color: #6c757d;
+    pointer-events: none;
+    background-color: #fff;
+    border-color: #dee2e6;
+}
+
+/* ===== DATABASE TOGGLE STYLES ===== */
+.db-toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.db-toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.db-toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ffffff;
+    border: 2px solid #007bff;
+    transition: .4s;
+}
+
+.db-toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #007bff;
+    transition: .4s;
+}
+
+.db-toggle-switch input:checked + .db-toggle-slider {
+    background-color: #d4edda;
+    border-color: #28a745;
+}
+
+.db-toggle-switch input:checked + .db-toggle-slider:before {
+    background-color: #28a745;
+    transform: translateX(26px);
+}
+
+.db-toggle-round {
+    border-radius: 34px;
+}
+
+.db-toggle-round:before {
+    border-radius: 50%;
+}
+
+.db-toggle-container {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* ===== ACTIVE MENU STYLES ===== */
+.active-menu-item {
+    background-color: #007bff !important;
+    color: white !important;
+    border-radius: 4px;
+}
+
+.active-menu-parent {
+    background-color: #f8f9fa !important;
+    border-left: 4px solid #007bff !important;
+}
+
+#main-menu .nav li.active-menu-parent a {
+    background-color: #f8f9fa !important;
+    color: #007bff !important;
+    font-weight: bold;
+}
+
+/* ===== SEARCH COMPONENT STYLES ===== */
+.table-search-container {
+    margin-bottom: 20px;
+}
+
+.table-search-input {
+    max-width: 300px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 8px 12px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.table-search-input:focus {
+    border-color: #007bff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Global Components Containers */
+.global-db-toggle {
+    display: none;
+    padding: 10px 0;
+}
+
+.global-search-container {
+    display: none;
+    background: #f8f9fa;
+    padding: 15px 0;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.global-pagination-container {
+    display: none;
+    padding: 20px 0;
+}
+
+/* ===== SPINNER STYLES ===== */
+.spinner-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ===== TOAST NOTIFICATION STYLES ===== */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+}
+
+.toast {
+    background: white;
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    min-width: 300px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-left: 4px solid #3498db;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transform: translateX(400px);
+    transition: transform 0.3s ease-in-out;
+}
+
+.toast.show {
+    transform: translateX(0);
+}
+
+.toast.success {
+    border-left-color: #2ecc71;
+}
+
+.toast.error {
+    border-left-color: #e74c3c;
+}
+
+.toast.warning {
+    border-left-color: #f39c12;
+}
+
+.toast-icon {
+    margin-right: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.toast-message {
+    flex: 1;
+    font-size: 14px;
+    color: #333;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #7f8c8d;
+    margin-left: 10px;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toast-close:hover {
+    color: #34495e;
+}
+
+/* ===== RESPONSIVE STYLES ===== */
+@media (max-width: 768px) {
+    .db-toggle-switch {
+        width: 50px;
+        height: 28px;
+    }
+    
+    .db-toggle-slider:before {
+        height: 18px;
+        width: 18px;
+        left: 3px;
+        bottom: 3px;
+    }
+    
+    .db-toggle-switch input:checked + .db-toggle-slider:before {
+        transform: translateX(22px);
+    }
+    
+    .table-search-input {
+        max-width: 100%;
+    }
+    
+    .custom-pagination .page-item .page-link {
+        padding: 6px 10px;
+        margin: 0 2px;
+        font-size: 14px;
+    }
+    
+    .toast {
+        min-width: 250px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+/* ===== ACCESSIBILITY STYLES ===== */
+.db-toggle-switch:focus-within .db-toggle-slider {
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.table-search-input:focus {
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.custom-pagination .page-link:focus {
+    outline: 2px solid #00ff26;
+    outline-offset: 2px;
+}
+
+/* ===== ANIMATION STYLES ===== */
+.db-toggle-slider {
+    transition: all 0.4s ease-in-out;
+}
+
+.db-toggle-slider:before {
+    transition: all 0.4s ease-in-out;
+}
+
+.table-search-input {
+    transition: all 0.15s ease-in-out;
+}
+
+.toast {
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+    .global-db-toggle,
+    .global-search-container,
+    .global-pagination-container,
+    .db-toggle-switch,
+    .table-search-container,
+    .custom-pagination,
+    .spinner-overlay,
+    .toast-container {
+        display: none !important;
+    }
+}
+
+/* ===== FOOTER PAGINATION STYLES ===== */
+.global-pagination-container {
+    display: none;
+    padding: 20px 0;
+    background: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+    margin-top: 20px;
+}
+
+.global-pagination-container .custom-pagination {
+    margin: 0;
+}
+
+/* Ensure the main content area has proper spacing */
+.main-content {
+    min-height: calc(100vh - 200px); /* Adjust based on your header/footer height */
+}
+/* ===== SEARCH CONTAINER STYLES ===== */
+.global-search-container {
+    display: none;
+    background: #f8f9fa;
+    padding: 15px 0;
+    border-bottom: 1px solid #dee2e6;
+    margin-bottom: 0;
+}
+
+.global-search-container .container-fluid {
+    padding: 0 15px;
+}
+
+/* ===== PAGINATION CONTAINER STYLES ===== */
+.global-pagination-container {
+    display: none;
+    padding: 20px 0;
+    background: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+}
+
+/* Ensure the table comes right after search */
+.global-search-container + .content {
+    margin-top: 0;
+}
+
+/* Remove any gaps between search and table */
+.table-search-container {
+    margin-bottom: 0;
+}
+/* ===== PAGINATION CONTAINER STYLES ===== */
+.global-pagination-container {
+    display: none;
+    padding: 20px 0;
+    background: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+    text-align: center; /* Center the pagination */
+}
+
+.global-pagination-container .custom-pagination {
+    margin: 0;
+    display: inline-block; /* Make pagination inline so it centers properly */
+    text-align: center;
+}
+
+/* Ensure pagination items are centered */
+.global-pagination-container .custom-pagination .page-item {
+    display: inline-block;
+    float: none; /* Remove any floating */
+}
+
+/* Center the page info text */
+.global-pagination-container .text-center {
+    text-align: center !important;
+    width: 100%;
+    display: block;
+}
+
+/* Remove any right-floating behavior */
+.custom-pagination {
+    float: none !important;
+}
