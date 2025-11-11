@@ -15,7 +15,8 @@ continueBtn.onclick = () => {
         let data = xhr.response;
         console.log(data);
         if (data == "success") {
-          location.href = "/quiz/lumers/login.php";
+          location.href = "/quiz/lumers/login.html";
+          // location.href = "/quiz/lumers/login.php";
         } else {
           errorText.textContent = data;
           errorText.style.display = "block";

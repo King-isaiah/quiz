@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="website/css/styles.css">
     <link rel="stylesheet" href="website/css/fontawsome.css">
+    <link type="image/x-icon" rel="icon" href="img/logo2.png" />
 </head>
 <body>
     <!-- Animated Background Elements -->
@@ -33,25 +34,28 @@
             </div>
             
             <div class="nav-menu">
-                <a href="#home" class="nav-link active">Home</a>
+                <a href="index.html" class="nav-link active">Home</a>
                 <a href="#scholarships" class="nav-link">Scholarships</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="quiz/lumers/login.php" class="nav-link">Apply</a>
+                <a href="aboutUs.html" class="nav-link">About</a>
+                <a href="lumers/signUp.html" class="nav-link">Apply</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
 
             <div class="nav-actions">
-                <button class="btn-login" id="loginBtn">
-                    <i class="fas fa-user-graduate"></i>
-                    <a href="lumers/signUp.html">Student Portal</a>
+                <a href="lumers/signUp.html" style="text-decoration: none; display: inline-block;">
+                    <button class="btn-login" id="loginBtn">
+                        Student Portal
+                        <i class="fas fa-user-graduate"></i>
+                    </button>
                     
-                </button>
+                </a>
+                
                 <div class="menu-toggle">
                     <div class="hamburger"></div>
                 </div>
             </div>
         </div>
-    </nav>s
+    </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -230,18 +234,13 @@
                             <h3>Quick Apply</h3>
                         </div>
                         <form class="mini-application">
-                            <input type="text" placeholder="Full Name" class="form-input">
-                            <input type="email" placeholder="Email Address" class="form-input">
-                            <select class="form-input">
-                                <option>Select Program</option>
-                                <option>Undergraduate Scholarship</option>
-                                <option>Graduate Fellowship</option>
-                                <option>Research Grant</option>
-                            </select>
-                            <button type="submit" class="btn-primary">
-                                Get Started
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
+                           
+                            <a href="lumers/signUp.html" style="text-decoration: none; display: inline-block;">
+                                <button type="button" class="btn-primary">
+                                    Get Started
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </a>
                         </form>
                     </div>
                 </div>
@@ -269,10 +268,10 @@
                 
                 <div class="footer-section">
                     <h4>Quick Links Testing out spmestuffs to see if all goes well and can push at will</h4>
-                    <a href="lumers/signUp.php">Scholarships</a>
+                    <a href="lumers/signUp.html">Scholarships</a>
                     <a href="aboutUs.html">About Us</a>
-                    <a href="lumers/signUp.php">Apply Now</a>
-                    <a href="lumers/signUp.php">Contact</a>
+                    <a href="lumers/signUp.html">Apply Now</a>
+                    <a href="lumers/signUp.html">Contact</a>
                 </div>
                 
                 <div class="footer-section">

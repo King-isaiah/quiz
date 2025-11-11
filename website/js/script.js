@@ -106,12 +106,13 @@ class LumersFoundation {
     
     setupEventListeners() {
         // Navigation
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                this.scrollToSection(link.getAttribute('href'));
-            });
-        });
+        // the navigationthat makes use of the scroll function in around line 290
+        // document.querySelectorAll('.nav-link').forEach(link => {
+        //     link.addEventListener('click', (e) => {
+        //         e.preventDefault();
+        //         this.scrollToSection(link.getAttribute('href'));
+        //     });
+        // });
         
         // Buttons
         document.getElementById('exploreBtn').addEventListener('click', () => {
@@ -122,9 +123,9 @@ class LumersFoundation {
             this.showApplicationModal();
         });
         
-        document.getElementById('loginBtn').addEventListener('click', () => {
-            this.showLoginModal();
-        });
+        // document.getElementById('loginBtn').addEventListener('click', () => {
+        //     // this.showLoginModal();
+        // });
         
         // Filter buttons
         document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -290,6 +291,8 @@ class LumersFoundation {
     filterScholarships(type) {
         this.renderScholarships(type);
     }
+
+    // this is normally for the scrolling down to a particular seciotn of the website so use if you want to 
     
     scrollToSection(sectionId) {
         const element = document.querySelector(sectionId);
