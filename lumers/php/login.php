@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once "connection.php";
+// include_once "connection.php";
 include_once "../../superbase/config.php";
 
 $email = mysqli_real_escape_string($link, $_POST['email']);

@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    include_once "connection.php";
+    // include_once "connection.php";
     include_once "../../superbase/config.php";
     $uname = mysqli_real_escape_string($link, $_POST['username']);
     $fname = mysqli_real_escape_string($link, $_POST['fname']);
