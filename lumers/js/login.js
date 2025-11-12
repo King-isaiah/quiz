@@ -26,8 +26,8 @@ continueBtn.onclick = () => {
         continueBtn.disabled = false;
         
         if (data == "success") {
-          location.href = "/quiz/students/dashboard.php";
-          // location.href = "/quiz/students/dashboard.html";
+          // location.href = "/quiz/students/dashboard.php";
+          location.href = " students/dashboard.php";
         } else {
           errorText.textContent = data;
           errorText.style.display = "block";
