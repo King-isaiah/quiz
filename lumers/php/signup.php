@@ -1,14 +1,21 @@
 <?php 
     session_start();
-    // include_once "connection.php";
+    include_once "connection.php";
     include_once "../../superbase/config.php";
-    $uname = mysqli_real_escape_string($link, $_POST['username']);
-    $fname = mysqli_real_escape_string($link, $_POST['fname']);
-    $lname = mysqli_real_escape_string($link, $_POST['lname']);
-    $gender = mysqli_real_escape_string($link, $_POST['gender']);
-    $email = mysqli_real_escape_string($link, $_POST['email']);
-    $contact = mysqli_real_escape_string($link, $_POST['phone_number']);
-    $password = mysqli_real_escape_string($link, $_POST['password']);
+    $uname = $_POST['username'];
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $gender =$_POST['gender'];
+    $email = $_POST['email'];
+    $contact = $_POST['phone_number'];
+    $password = $_POST['password'];
+    // $uname = mysqli_real_escape_string($link, $_POST['username']);
+    // $fname = mysqli_real_escape_string($link, $_POST['fname']);
+    // $lname = mysqli_real_escape_string($link, $_POST['lname']);
+    // $gender = mysqli_real_escape_string($link, $_POST['gender']);
+    // $email = mysqli_real_escape_string($link, $_POST['email']);
+    // $contact = mysqli_real_escape_string($link, $_POST['phone_number']);
+    // $password = mysqli_real_escape_string($link, $_POST['password']);
                    
  
     // if(!empty($fname)  && !empty($lname) && !empty($email) && !empty($password)){
