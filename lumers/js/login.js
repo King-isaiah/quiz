@@ -27,7 +27,10 @@ continueBtn.onclick = () => {
         
         if (data == "success") {
           // location.href = "/quiz/students/dashboard.php";
-          location.href = " students/dashboard.php";
+          // Get current domain and build full URL
+          // var baseUrl = window.location.origin;
+          // location.href = baseUrl + "/students/dashboard.php";
+          location.href = " /students/dashboard.php";
         } else {
           errorText.textContent = data;
           errorText.style.display = "block";
