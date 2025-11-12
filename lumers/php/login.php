@@ -3,8 +3,10 @@ session_start();
 // include_once "connection.php";
 include_once "../../superbase/config.php";
 
-$email = mysqli_real_escape_string($link, $_POST['email']);
-$password = mysqli_real_escape_string($link, $_POST['password']);
+$email = $_POST['email'];
+$password = $_POST['password'];
+// $email = mysqli_real_escape_string($link, $_POST['email']);
+// $password = mysqli_real_escape_string($link, $_POST['password']);
 
 
 // if(!empty($email) && !empty($password)){   

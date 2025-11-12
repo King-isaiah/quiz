@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    include_once "connection.php";
+    // include_once "connection.php";
     include_once "../../superbase/config.php";
     $uname = $_POST['username'];
     $fname = $_POST['fname'];
