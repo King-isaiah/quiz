@@ -27,14 +27,16 @@ if(isset($_SESSION['unique_id'])){
             // Fallback: redirect anyway after error
             session_unset();
             session_destroy();           
-            header("location:../../lumers/login.php");
+            // header("location:../../lumers/login.php");
+           echo "<script>window.location.href = '/lumers/login.php';</script>";
             exit();
         } else {
             // The update was successful
             echo "Status updated to offline.";
             session_unset();
             session_destroy();           
-            header("location:../../lumers/login.php");
+            // header("location:../../lumers/login.php");
+            echo "<script>window.location.href = '/lumers/login.php';</script>";
             exit(); 
         }             
     } else {
