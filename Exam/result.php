@@ -1,5 +1,6 @@
+<?php session_start(); ?>
 <?php 
-include "connection.php"; 
+// include "connection.php"; 
 include "header.php";
 include "../superbase/config.php"; // Added Supabase config
 

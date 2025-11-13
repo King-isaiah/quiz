@@ -1,6 +1,7 @@
+<?php session_start(); ?>
 <?php 
     include "header.php";
-    include "connection.php";
+    // include "connection.php";
     include "../superbase/config.php"; // Added Supabase config
     $unique = $_SESSION['unique_id'];
     $examName =  $_SESSION['catsexam'];
