@@ -46,7 +46,8 @@ if(isset($_SESSION['unique_id'])){
     }
 } else {
     echo "fixing something here, be patient";
-    header("location: ../login.php");
+    // header("location: ../login.php");
+    echo "<script>window.location.href = '/lumers/login.php';</script>";
     exit();
 }
 ?>
