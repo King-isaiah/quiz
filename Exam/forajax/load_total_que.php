@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    include "../connection.php";
+    // include "../connection.php";
     include "../../superbase/config.php";
     $total_que=0;
     

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../connection.php";
+// include "../connection.php";
 include "../../superbase/config.php"; // Added Supabase config
 
 // Initialize or reset the questions_order in the session
