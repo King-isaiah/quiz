@@ -92,10 +92,10 @@ if ($numRows > 0) {
         xmlhttp.onreadystatechange=function(){
             if(xmlhttp.readyState==4 && xmlhttp.status==200){
                 // window.location="dashboard.php";
-                window.location="/students/dashboard.php";
+                window.location="/Exam/dashboard.php";
             }
         };
-        xmlhttp.open("GET","/students/forajax/set_exam_type_session.php?exam_category="+ exam_category, true);
+        xmlhttp.open("GET","/Exam/forajax/set_exam_type_session.php?exam_category="+ exam_category, true);
         // xmlhttp.open("GET","forajax/set_exam_type_session.php?exam_category="+ exam_category, true);
         xmlhttp.send(null);
     }
