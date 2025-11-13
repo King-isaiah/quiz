@@ -21,7 +21,8 @@
     if ($numRows > 0) {    
         ?>
         <script>
-            window.location = "old_exam_results.php";
+            window.location = "/Exam/old_exam_results.php";
+            // window.location = "old_exam_results.php";
         </script>
         <?php
         exit();
@@ -73,7 +74,8 @@
                document.getElementById("total_que").innerHTML=xmlhttp.responseText;
             }
         };
-        xmlhttp.open("GET","forajax/load_total_que.php", true);
+        // xmlhttp.open("GET","forajax/load_total_que.php", true);
+        xmlhttp.open("GET","/Exam/forajax/load_total_que.php", true);
         xmlhttp.send(null);
     }
     
@@ -100,7 +102,8 @@
             }
         };
 
-        xmlhttp.open("GET", "forajax/load_questions.php?questionno=" + questionno, true);
+        // xmlhttp.open("GET", "forajax/load_questions.php?questionno=" + questionno, true);
+        xmlhttp.open("GET", "/Exam/forajax/load_questions.php?questionno=" + questionno, true);
         xmlhttp.send(null);
     }
 
@@ -112,7 +115,8 @@
                
             }
         };
-        xmlhttp.open("GET","forajax/save_answer_in_session.php?questionno="+ questionno +"&value1="+radiovalue, true);
+        xmlhttp.open("GET","Exam/forajax/save_answer_in_session.php?questionno="+ questionno +"&value1="+radiovalue, true);
+        // xmlhttp.open("GET","forajax/save_answer_in_session.php?questionno="+ questionno +"&value1="+radiovalue, true);
         xmlhttp.send(null);
         
     }
@@ -131,14 +135,15 @@
             xmlhttp.onreadystatechange=function(){
                 if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
                 let log = xmlhttp.responseText;
-                console.log('we testing questions'+log)
+                // console.log('we testing questions'+log)
                     if(questionno != log){
                         console.log('we moving'+log)
                         document.getElementById("test").value= 'next'; 
                     }
                 }
             };
-            xmlhttp.open("GET","forajax/load_total_que.php", true);
+            xmlhttp.open("GET","Exam/forajax/load_total_que.php", true);
+            // xmlhttp.open("GET","forajax/load_total_que.php", true);
             xmlhttp.send(null);
         }
     }
@@ -159,7 +164,8 @@
                 }
             }
         };
-        xmlhttp.open("GET","forajax/load_total_que.php", true);
+        xmlhttp.open("GET","Exam/forajax/load_total_que.php", true);
+        // xmlhttp.open("GET","forajax/load_total_que.php", true);
         xmlhttp.send(null);
         
        
