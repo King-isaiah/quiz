@@ -4,7 +4,8 @@
   
   // Check if reference is provided
   if(!isset($_GET['reference']) || $_GET['reference'] === ''){
-      header("Location: javascript://history.go(-1)");
+    echo "<script>window.location.href = 'javascript://history.go(-1)';</script>";
+    // header("Location: javascript://history.go(-1)");
       exit;
   }
   
@@ -83,13 +84,15 @@
         // error_log("Supabase insertion error: " . $insertResult['error']);
     } else {
         // Success - redirect to success page
-        header("Location: success.php?status=success");
+        // header("Location: success.php?status=success");
+        echo "<script>window.location.href = 'success.php?status=success';</script>";
         exit;
     }
     
   } else {
     // Payment failed
-    header("Location: error.html");
+    // header("Location: error.html");
+    echo "<script>window.location.href = 'error.html';</script>";
     exit;
   }
 ?>
