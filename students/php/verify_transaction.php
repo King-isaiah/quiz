@@ -60,7 +60,7 @@
     $Date_time = date('m/d/Y h:i:s a', time());
 
     // Include config to use Supabase functions
-    include_once "config.php";
+    // include_once "config.php";
     
     // Prepare data for Supabase
     $paymentData = [
