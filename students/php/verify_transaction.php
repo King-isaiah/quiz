@@ -41,7 +41,7 @@
   curl_close($curl);
   
   if ($err) {
-    echo "cURL Error #:" . $err;
+    // echo "cURL Error #:" . $err;
     exit;
   }
   
@@ -78,9 +78,9 @@
     
     if (isset($insertResult['error'])) {
         // Handle Supabase insertion error
-        echo "Error saving payment details: " . $insertResult['error'];
+        // echo "Error saving payment details: " . $insertResult['error'];
         // You might want to log this error for debugging
-        error_log("Supabase insertion error: " . $insertResult['error']);
+        // error_log("Supabase insertion error: " . $insertResult['error']);
     } else {
         // Success - redirect to success page
         header("Location: success.php?status=success");
