@@ -1,6 +1,6 @@
 <?php 
     include "header.php";
-    include "connection.php";
+    // include "connection.php";
     include "../superbase/config.php";
 ?>
 <?php
@@ -90,10 +90,12 @@ if ($numRows > 0) {
         var xmlhttp=new XMLHttpRequest();
         xmlhttp.onreadystatechange=function(){
             if(xmlhttp.readyState==4 && xmlhttp.status==200){
-                window.location="dashboard.php";
+                // window.location="dashboard.php";
+                window.location="/students/dashboard.php";
             }
         };
-        xmlhttp.open("GET","forajax/set_exam_type_session.php?exam_category="+ exam_category, true);
+        xmlhttp.open("GET","/students/forajax/set_exam_type_session.php?exam_category="+ exam_category, true);
+        // xmlhttp.open("GET","forajax/set_exam_type_session.php?exam_category="+ exam_category, true);
         xmlhttp.send(null);
     }
 </script>
