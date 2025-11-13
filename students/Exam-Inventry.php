@@ -596,7 +596,12 @@
                 callback: function(response){
                     let message = 'Payment complete! Reference: ' + response.reference;
                     alert(message);
-                    window.location = "http://localhost/quiz/students/php/verify_transaction.php?reference=" + response.reference;
+                    // the bellow is for localhost location
+                    // window.location = "http://localhost/quiz/students/php/verify_transaction.php?reference=" + response.reference;
+                    // to be safe lets keep this
+                    // window.location = "php/verify_transaction.php?reference=" + response.reference;
+                    // This automatically uses your current domain
+                    window.location = window.location.origin + "/students/php/verify_transaction.php?reference=" + response.reference;
                 }
             });
             handler.openIframe();
