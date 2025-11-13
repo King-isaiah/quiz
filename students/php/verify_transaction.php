@@ -14,7 +14,7 @@
 
   // Check if session data exists
   if (!$unique || !$exam) {
-      echo "Error: Session data missing. Please try the payment again.";
+      // echo "Error: Session data missing. Please try the payment again.";
       exit;
   }
 ?>
