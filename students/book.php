@@ -1,4 +1,7 @@
-<?php include "header.php"?>
+<?php 
+    session_start();
+    include "header.php";
+?>
 
 <div class="dashboard-front-view">
     <div class="book-header">

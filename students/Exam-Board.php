@@ -1,6 +1,7 @@
 <?php 
+    session_start();
     include "header.php";
-    include "../connection.php"; // Local connection - KEEPING FOR REFERENCE 
+    // include "../connection.php"; // Local connection - KEEPING FOR REFERENCE 
 ?>
 <?php
     // Check database preference from cookie
