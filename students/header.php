@@ -29,7 +29,7 @@
    
 ?>
 <?php 
-    include_once "php/config.php";
+    // include_once "php/config.php";
     include "../superbase/config.php";
     
     // $sql = mysqli_query($link, "SELECT * FROM registration WHERE unique_id = {$_SESSION['unique_id']}");
