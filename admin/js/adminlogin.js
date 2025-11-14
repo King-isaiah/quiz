@@ -28,7 +28,8 @@ continueBtn.onclick = () => {
     showSpinner();
     
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "php/adminlogin.php", true);
+    xhr.open("POST", "/admin/php/adminlogin.php", true);
+    // xhr.open("POST", "php/adminlogin.php", true);
     
     xhr.onload = () => {
         hideSpinner();
@@ -42,7 +43,8 @@ continueBtn.onclick = () => {
                     
                     if (result?.success) {
                         alert(result?.message);
-                        location.href = "/quiz/admin/exam_category.php";
+                        // location.href = "/quiz/admin/exam_category.php";
+                        location.href = "/admin/exam_category.php";
                     } else {
                         errorText.textContent = result?.message;
                         errorText.style.display = "block";
