@@ -119,7 +119,7 @@ continueBtn.onclick = () => {
     fullpageLoader.style.display = "none";
     form.classList.remove("form-disabled");
     continueBtn.disabled = false;
-    errorText.textContent = "Request timeout! Please try again.";
+    errorText.textContent = "Request timeout! Please Use a Stronger Connection ndtry again.";
     errorText.style.display = "block";
   };
 
