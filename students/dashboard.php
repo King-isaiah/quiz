@@ -14,7 +14,9 @@
             </div>
            <div class='textdiv'>
                 <h3 class='margin'><?php echo $row['lastname'] .  " " . $row['firstname'] ?></h3>
-                <button class='btn1' style="color: white;"><a href="Account-Settings.php" style="cursor: pointer;">Edit Profile</a></button>
+                <button class='btn1' style="color: white;">
+                    <a href="Account-Settings.php" style="cursor: pointer;">Edit Profile</a>
+                </button>
             </div>
             
         </div>

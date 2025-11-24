@@ -256,6 +256,9 @@
         top: 20px; /* Adjust this value to position the icon vertically */
         left: 20em;         
     }
+    .textdiv{
+        display: none;
+    }
    
 }
 @media (max-width: 800px) {
