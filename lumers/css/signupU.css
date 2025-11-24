@@ -1,0 +1,455 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #f7f7f7;
+}
+.wrapper {
+  background: #fff;
+  width: 550px;
+  border-radius: 16px;
+  box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1),
+    0 32px 64px -48px rgba(0, 0, 0, 0.5);
+}
+/* Signup From Css code */
+.form {
+  padding: 25px 30px;
+}
+/* the line under the real chat app */
+.form header {
+  font-size: 25px;
+  font-weight: 600;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e6e6e6;
+}
+.form form {
+  margin: 20px 0;
+}
+/* the erro text msg not */
+.form form .error-txt {
+  color: #721c24;
+  background: #f8d7da;
+  padding: 8px 10px;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #f5c6cb;
+  display: none;
+}
+.form form .succes-txt{
+  color: #34721c;
+  background: #f8d7da;
+  padding: 8px 10px;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #f5c6cb;
+  display: none;
+}
+.form form .name-details {
+  display: flex;
+}
+form .name-details .field:first-child {
+  margin-right: 10px;
+}
+form .name-details .field:last-child {
+  margin-right: 10px;
+}
+.form form .field {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+.form form .field label {
+  margin-bottom: 2px;
+}
+/* to have that line appearing and diosapperaing in the forms */
+
+.form form .field input {
+  outline: none;
+}
+.form form .input input {
+  height: 40px;
+  width: 100%;
+  font-size: 16px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.form select{
+  height: 40px;
+  width: 100%;
+  font-size: 16px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.form form .image input {
+  font-size: 17px;
+}
+.form form .button input {
+  margin-top: 13px;
+  height: 45px;
+  border: none;
+  font-size: 17px;
+  font-weight: 400;
+  background: #1bd01e;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/* make eye icon inside password form and shaded color */
+.form form .field i {
+  position: absolute;
+  right: 15px;
+  color: #ccc;
+  top: 70%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.form form .field i.active::before {
+  content: "\f070";
+  color: #333;
+}
+.form .link {
+  text-align: center;
+  margin: 10px 0;
+  font-size: 17px;
+}
+.form .link a {
+  color: #333;
+}
+.form .link a:hover {
+  text-decoration: underline;
+}
+
+/* Users Area CSS Code */
+.users {
+  padding: 25px 30px;
+}
+.users header,
+.users-list a {
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px;
+  justify-content: space-between;
+  border-bottom: 1px solid #e6e6e6;
+}
+/* making profile picture round */
+.wrapper img {
+  object-fit: cover;
+  border-radius: 50%;
+}
+:is(.users, .users-list) .content {
+  display: flex;
+  align-items: center;
+}
+.users header .content img {
+  height: 50px;
+  width: 50px;
+}
+:is(.users, .users-list) .details {
+  color: #000;
+  margin-left: 15px;
+}
+:is(.users, .users-list) .details span {
+  font-size: 18px;
+  font-weight: 500;
+}
+.users header .logout {
+  color: #fff;
+  font-size: 17px;
+  padding: 7px 15px;
+  background: #333;
+  border-radius: 5px;
+}
+.users .search {
+  margin: 20px 0;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+}
+.users .search .text {
+  font-size: 18px;
+}
+/* .users .search input {
+   
+}
+the above and below clas names are the same be careful */
+
+.textInactive {
+  position: absolute;
+  height: 42px;
+  width: calc(100% - 50px);
+  border: 1px solid #ccc;
+  padding: 0 13px;
+  font-size: 16px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.users .search input.active {
+  /* cursor: pointer; */
+  opacity: 1;
+  pointer-events: auto;
+}
+.users .search button {
+  width: 47px;
+  height: 42px;
+  border: none;
+  outline: none;
+  color: #333;
+  background: #fff;
+  cursor: pointer;
+  font-size: 17px;
+  border-radius: 0 5px 5px 0;
+  transition: all 0.2s ease;
+}
+.users .search button.active {
+  color: #fff;
+  background: #333;
+}
+/* the bellow is a unicode of  an icon */
+.users .search button.active i::before {
+  content: "\f00d";
+}
+/* to give it the scroll down upp effect */
+.users-list {
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+/* to mke the scrolling invincible */
+/* :is(.users-list, .chat-box)::-webkit-scrollbar {
+  width: 0px;
+} */
+.users-list a {
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  padding-right: 15px;
+  border-bottom-color: #f1f1f1;
+}
+.users-list a:last-child {
+  border: none;
+  margin-bottom: 0px;
+}
+.users-list a .content img {
+  height: 40px;
+  width: 40px;
+}
+.users-list a .content p {
+  color: #67676a;
+}
+.users-list a .status-dot {
+  font-size: 12px;
+  color: #468669;
+}
+
+/* We'll use this class name in php to show offline status */
+.users-list a .status-dot.offline {
+  color: #ccc;
+}
+
+/* chat area css code */
+.chat-area header {
+  display: flex;
+  align-items: center;
+  padding: 18px 30px;
+}
+.chat-area header .back-icon {
+  font-size: 18px;
+  color: #333;
+}
+.chat-area header img {
+  height: 45px;
+  width: 45px;
+  margin: 0 15px;
+}
+
+.chat-area header span {
+  font-size: 17px;
+  font-weight: 500;
+}
+/* to give the top nav of this like  different lighter color than the text space */
+.chat-box {
+  height: 500px;
+  overflow-y: auto;
+  background: #f7f7f7;
+  padding: 10px 30px 20px 30px;
+  box-shadow: inset 0 32px 32px -32px rgb(0 0 0 / 5%),
+    inset 0 -32px 32px -32px rgb(0 0 0 / 5%);
+}
+.chat-box .chat {
+  margin: 15px 0;
+}
+.chat-box .chat p {
+  word-wrap: break-word;
+  padding: 8px 16px;
+  box-shadow: 0 0 32px rgb(0 0 0 / 8%), 0 16px 16px -16px rgb(0 0 0 / 10%);
+}
+.chat-box .outgoing {
+  display: flex;
+}
+/* to make the messages appear at the sides like how it would apper on normal text pages */
+.outgoing .details {
+  margin-left: auto;
+  max-width: calc(100% - 130px);
+}
+/* to give it that color if you know what i mean */
+.outgoing .details p {
+  background: #333;
+  color: #fff;
+
+  border-radius: 18px 18px 18px 0;
+}
+.chat-box .incoming {
+  display: flex;
+  align-items: flex-end;
+}
+
+.chat-box .incoming img {
+  height: 35px;
+  width: 35px;
+}
+.incoming .details {
+  margin-left: 10px;
+  margin-right: auto;
+  max-width: calc(100% - 130px);
+}
+.incoming .details p {
+  background: #fff;
+  color: #333;
+  border-radius: 18px 18px 18px 0;
+}
+
+.chat-area .typing-area {
+  padding: 18px 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.typing-area input {
+  height: 45px;
+  width: calc(100% - 58px);
+  font-size: 17px;
+  border: 1px solid #ccc;
+  padding: 0 13px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+}
+.typing-area button {
+  width: 55px;
+  border: none;
+  outline: none;
+  border-radius: 0 5px 5px 0;
+  background: #333;
+  color: #fff;
+  font-size: 19px;
+  cursor: pointer;
+}
+/* Loader Styles */
+/* .loader {
+  display: none;
+  text-align: center;
+  margin: 15px 0;
+}
+
+.spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #333;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+} */
+
+/* .loader-text {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #666;
+} */
+
+
+/* Full Page Loader Styles */
+.fullpage-loader {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.overlay-spinner {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #1bd01e;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+.overlay-text {
+  font-size: 18px;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Keep your existing spinner animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add form disabled state */
+.form-disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
+/* Disable form during loading */
+.form-loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.button input:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+@media (max-width: 460px) {
+    .wrapper{
+        width: 400px;
+        margin-left: 1em;
+    }
+    .form form .button input {
+      margin-top: 13px;
+
+      font-size: 19px;
+      font-weight: 100;       
+    }
+}

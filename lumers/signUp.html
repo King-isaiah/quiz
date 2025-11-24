@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register Now</title>
-    <link rel="stylesheet" href="css/signup.css" />
+    <link rel="stylesheet" href="css/signupU.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
@@ -13,12 +13,24 @@
    
   </head>
   <body>
+    <div class="fullpage-loader" id="fullpageLoader">
+      <div class="overlay-spinner"></div>
+      <div class="overlay-text">Creating Your Account...</div>
+    </div>
     <div class="wrapper">
       <section class="form signup">
         <header>Sign Up For The LUMERS</header>
         <form action="#" enctype="multipart/form-data" autocomplete="off">
           <div class="error-txt"></div>
+          <div class="succes-txt"></div>
           <div class="name-details">
+
+            <!-- Loader Section -->
+            <!-- <div class="loader">
+              <div class="spinner"></div>
+              <div class="loader-text">Signing Up...</div>
+            </div> -->
+
             <div class="field input">
               <label>First Name</label>
               <input type="text" name="fname" placeholder="First Name" required/>
@@ -74,7 +86,7 @@
           </div>
          
           <!-- field -->
-          <div class="field button">
+          <div class="field button smaller">
             <input type="submit" value="Sign Up"/> 
           </div>
           <!-- field -->

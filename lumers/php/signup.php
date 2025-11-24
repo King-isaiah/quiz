@@ -101,7 +101,7 @@
                 }
 
                 if (!empty($existingEmail)) {
-                    echo "$email - this email already exists.";
+                    echo "$email - this email already exists.Please go to the login page ";
                 } else {
                     // Check if the username already exists
                     $existingUsername = fetchData('registration?username=eq.' . urlencode($uname));
@@ -154,7 +154,7 @@
                                     if (isset($insertResult['error'])) {
                                         echo "Error inserting data: " . htmlspecialchars($insertResult['error']);
                                     } else {
-                                        echo "success: Succesfully inserted data: " ;
+                                        echo "success" ;
                                         // Fetch the newly created user to set session variables
                                         $newUser = fetchData('registration?email=eq.' . urlencode($email));
                                         if (isset($newUser['error'])) {
