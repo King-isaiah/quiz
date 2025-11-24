@@ -124,7 +124,7 @@ continueBtn.onclick = () => {
   };
 
   // Set timeout (10 seconds)
-  xhr.timeout = 10000;
+  xhr.timeout = 40000;
   
   // Send form data
   let formData = new FormData(form); 

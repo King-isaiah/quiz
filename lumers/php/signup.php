@@ -101,7 +101,7 @@
                 }
 
                 if (!empty($existingEmail)) {
-                    echo "$email - this email already exists.Please go to the login page ";
+                    echo "$email - this email has already been registered.Please go to the login page ";
                 } else {
                     // Check if the username already exists
                     $existingUsername = fetchData('registration?username=eq.' . urlencode($uname));
