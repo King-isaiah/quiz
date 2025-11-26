@@ -1,5 +1,4 @@
-<?php 
-    session_start();
+<?php session_start();
     // include "../connection.php";
     include "../superbase/config.php";
 ?>
@@ -77,37 +76,4 @@
 
 </html>
 
-<?php
-    // localhost and working server   
-    // if(isset($_POST["submit1"])){
-    //     $count=0;
-    //     $username = mysqli_real_escape_string($link,$_POST["username"]);
-    //     $password = mysqli_real_escape_string($link,$_POST["password"]);
-
-    //     $res = mysqli_query($link, "select * from admin_login where username='$username' && password='$password'");
-    //     $count= mysqli_num_rows($res);
-
-    //     if($count==0){
-    //         ?>
-         <script type="text/javascript">
-    //             document.getElementById("errormsg").style.display="block";
-    //         </script>
-         <?php
-    //     }else{
-    //         $_SESSION["admin"]=$username;
-    //         ?>
-            <script type ="text/javascript">
-    //             window.location="exam_category.php";
-    //         </script>
-         <?php
-    //     }
-    // }
-
-  
-
-
-
-    
-
-?>
 
