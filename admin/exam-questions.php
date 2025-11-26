@@ -2,7 +2,7 @@
 <?php include "header.php"; ?>
 
 <?php 
-    include "../connection.php";
+    // include "../connection.php";
     include "../superbase/config.php";
     
     if(!isset($_SESSION["admin"])){

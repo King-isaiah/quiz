@@ -2,7 +2,7 @@
 <?php include "header.php"?>
 
 <?php 
-    include "../connection.php";
+    // include "../connection.php";
     if(!isset($_SESSION["admin"])){
         ?>
         <script type="text/javascript"> 
