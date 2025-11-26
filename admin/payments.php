@@ -1,8 +1,8 @@
 <?php 
     session_start();
     include "header.php";
-    include "../connection.php";
-    include "../superbase/config.php"; // Add Supabase connection
+    // include "../connection.php";
+    include "../superbase/config.php"; 
 ?>
 <style>
     .circling-button {

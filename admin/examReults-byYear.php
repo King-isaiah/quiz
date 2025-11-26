@@ -1,7 +1,7 @@
 <?php 
 session_start();
 include "header.php";
-include "../connection.php"; // Local connection
+// include "../connection.php";
 include "../superbase/config.php"; // Supabase connection
 ?>
 

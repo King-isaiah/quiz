@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require_once '../../connection.php'; // Local connection
+// require_once '../../connection.php';
 require_once '../../superbase/config.php'; // Supabase connection
 
 header('Content-Type: application/json');

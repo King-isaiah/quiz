@@ -21,7 +21,7 @@
 ?>
 <?php
 // session_start();
-include "../../connection.php";
+// include "../../connection.php";
 include "../../superbase/config.php"; // Add Supabase config
 
 // Determine which connection to use
