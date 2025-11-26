@@ -1,7 +1,4 @@
-<?php session_start();
-    // include "../connection.php";
-    // include "../superbase/config.php";
-?>
+<?php session_start();?>
 <!doctype html>
 
 <html class="no-js" lang="en">

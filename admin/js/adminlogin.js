@@ -42,7 +42,7 @@ continueBtn.onclick = () => {
                     const result = JSON.parse(data);
                     
                     if (result?.success) {
-                        alert(result?.message);
+                        // alert(result?.message);
                         // location.href = "/quiz/admin/exam_category.php";
                         location.href = "/admin/exam_category.php";
                     } else {
