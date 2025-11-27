@@ -8,7 +8,7 @@
     }
 
 
-    // $sessionTimeout = 10 * 60; 
+    
 
     $sessionTimeout = 1 * 60 * 60; // 1 hours in seconds
 
