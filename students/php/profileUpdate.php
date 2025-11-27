@@ -25,12 +25,10 @@ $email = $_POST['email'];
 $password = isset($_POST['password']) ? $_POST['password'] : '';
 $contact = isset($_POST['phone_number']) ? $_POST['phone_number'] : '';
 
-// If you need mysqli for some reason, uncomment the connection include
-// Otherwise remove mysqli_real_escape_string calls
+
 
 if (!empty($lname) && !empty($uname )) {    
-    // if (filter_var($email, FILTER_VALIDATE_EMAIL)) {        
-        // Check if email exists in Supabase
+    
         $emailCheck = fetchData('registration?email=eq.' . urlencode($email));
         if (count($emailCheck) > 0) { 
             $response['success'] = false;
@@ -53,38 +51,86 @@ if (!empty($lname) && !empty($uname )) {
                     $time = time();
                     $new_img_name = $time . $img_name;
                     
-                    if (move_uploaded_file($tmp_name, "../../lumers/php/images/$new_img_name")) {                              
-                        $unique = $_SESSION['unique_id'];
-                        $hash = !empty($password) ? password_hash($password, PASSWORD_BCRYPT) : '';
+                    // if (move_uploaded_file($tmp_name, "../../lumers/php/images/$new_img_name")) {                              
+                    //     $unique = $_SESSION['unique_id'];
+                    //     $hash = !empty($password) ? password_hash($password, PASSWORD_BCRYPT) : '';
 
                         
-                        $data = [
-                            'username' => $uname,
-                            'lastname' => $lname,
-                            'gender' => $gender,
-                            'contact' => $contact,
-                            'email' => $email,
-                            'img' => $new_img_name
-                        ];
+                    //     $data = [
+                    //         'username' => $uname,
+                    //         'lastname' => $lname,
+                    //         'gender' => $gender,
+                    //         'contact' => $contact,
+                    //         'email' => $email,
+                           
+                    //     ];
                         
-                        // Only update password if provided
-                        if (!empty($hash)) {
-                            $data['password'] = $hash;
-                        }
+                    //     // Only update password if provided
+                    //     if (!empty($hash) && !empty($new_img_name)) {
+                    //         $data['img'] = $new_img_name;
+                    //         $data['password'] = $hash;
+                    //     }
 
-                        // Update the registration details in Supabase
-                        // $updateResponse = updateDataUniquetId('registration', $unique, $data);
-                        $updateResponse = updateDataWithoutId('registration', $unique, $data, 'unique_id'); 
-                        if (isset($updateResponse['error'])) {
-                            $response['success'] = false;
-                            $response['message'] = "Something went wrong during update: " . $updateResponse['error'];
+                    //     // Update the registration details in Supabase
+                    //     // $updateResponse = updateDataUniquetId('registration', $unique, $data);
+                    //     $updateResponse = updateDataWithoutId('registration', $unique, $data, 'unique_id'); 
+                    //     if (isset($updateResponse['error'])) {
+                    //         $response['success'] = false;
+                    //         $response['message'] = "Something went wrong during update: " . $updateResponse['error'];
+                    //     } else {
+                    //         $response['success'] = true;
+                    //         $response['message'] = "Profile updated successfully!";
+                    //     }
+                    // } else {
+                    //     $response['success'] = false;
+                    //     $response['message'] = "Failed to upload image file!";
+                    // }
+                    $unique = $_SESSION['unique_id'];
+                    $hash = !empty($password) ? password_hash($password, PASSWORD_BCRYPT) : '';
+
+                    $data = [
+                        'username' => $uname,
+                        'lastname' => $lname,
+                        'gender' => $gender,
+                        'contact' => $contact,
+                        // 'email' => $email,
+                    ];
+
+                    // Handle password if provided
+                    if (!empty($hash)) {
+                        $data['password'] = $hash;
+                    }
+
+                    // Handle image ONLY if user selected one
+                    if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+                        $img_name = $_FILES['image']['name']; 
+                        $tmp_name = $_FILES['image']['tmp_name']; 
+                        
+                        $img_explode = explode('.', $img_name);
+                        $img_ext = end($img_explode); 
+                        
+                        $extensions = ['png', 'jpeg', 'jpg']; 
+                        $time = time();
+                        $new_img_name = $time . $img_name;
+                        
+                        if (move_uploaded_file($tmp_name, "../../lumers/php/images/$new_img_name")) {
+                            $data['img'] = $new_img_name;  // Add image to update data
                         } else {
-                            $response['success'] = true;
-                            $response['message'] = "Profile updated successfully!";
+                            $response['success'] = false;
+                            $response['message'] = "Failed to upload image file!";
+                            echo json_encode($response);
+                            exit;
                         }
-                    } else {
+                    }
+
+                    // Now update with the final data (with or without image)
+                    $updateResponse = updateDataWithoutId('registration', $unique, $data, 'unique_id'); 
+                    if (isset($updateResponse['error'])) {
                         $response['success'] = false;
-                        $response['message'] = "Failed to upload image file!";
+                        $response['message'] = "Something went wrong during update: " . $updateResponse['error'];
+                    } else {
+                        $response['success'] = true;
+                        $response['message'] = "Profile updated successfully!";
                     }
                 } else {
                     $response['success'] = false;
@@ -92,10 +138,7 @@ if (!empty($lname) && !empty($uname )) {
                 }
             }          
         }
-    // } else {
-    //     $response['success'] = false;
-    //     $response['message'] = "$email - this is not a valid email";
-    // }
+    
 } else {
     $response['success'] = false;
     $response['message'] = "Last name and email fields are required!";
