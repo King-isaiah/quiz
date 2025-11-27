@@ -17,7 +17,7 @@
     }else {
         if (time() - $_SESSION['last_activity'] > $sessionTimeout) {            
             
-            echo "Session expired due to inactivity.";            
+            // echo "Session expired due to inactivity.";            
             header("Location: php/logout.php");
             exit();
         }
