@@ -252,6 +252,55 @@
     }
 
 
+    function updateDataUniquetId($tableName, $unique_id, $data) {
+        global $supabaseUrl, $supabaseKey;
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $supabaseUrl . '/rest/v1/' . $tableName . '?unique_id=eq.' . $unique_id);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Authorization: Bearer ' . $supabaseKey,
+            'apikey: ' . $supabaseKey,
+            'Content-Type: application/json',
+            'Prefer: return=representation' // To return the updated record
+        ]);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PATCH');
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+
+        $response = curl_exec($ch);
+        
+        if (curl_errno($ch)) {
+            return ['error' => curl_error($ch)];
+        }
+
+        curl_close($ch);
+        return json_decode($response, true);
+    }
+
+    function updateDataWithoutId($tableName, $id, $data, $columnName) {
+        global $supabaseUrl, $supabaseKey;
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $supabaseUrl . '/rest/v1/' . $tableName . '?' . $columnName . '=eq.' . $id);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Authorization: Bearer ' . $supabaseKey,
+            'apikey: ' . $supabaseKey,
+            'Content-Type: application/json',
+            'Prefer: return=representation' // To return the updated record
+        ]);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PATCH');
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+
+        $response = curl_exec($ch);
+        
+        if (curl_errno($ch)) {
+            return ['error' => curl_error($ch)];
+        }
+
+        curl_close($ch);
+        return json_decode($response, true);
+    }
     function updateData($tableName, $id, $data) {
         global $supabaseUrl, $supabaseKey;
 

@@ -56,7 +56,7 @@
             visibility: hidden;
         }
         
-        .warning-modal {
+        /* .warning-modal {
             background: white;
             border-radius: 15px;
             width: 90%;
@@ -66,8 +66,20 @@
             transform: scale(1);
             transition: transform 0.5s ease;
             position: relative;
-        }
-        
+        } */
+        .warning-modal {
+    background: white;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh; /* Limit height */
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transform: scale(1);
+    transition: transform 0.5s ease;
+    position: relative;
+    overflow-y: auto; /* Simple scroll on entire modal */
+}
         .modal-overlay.hidden .warning-modal {
             transform: scale(0.7);
         }
@@ -600,7 +612,7 @@
                     // window.location = "http://localhost/quiz/students/php/verify_transaction.php?reference=" + response.reference;
                     // to be safe lets keep this
                     // window.location = "php/verify_transaction.php?reference=" + response.reference;
-                    // This automatically uses your current domain
+                    
                     window.location = window.location.origin + "/students/php/verify_transaction.php?reference=" + response.reference;
                 }
             });

@@ -1,6 +1,7 @@
 <?php
     session_start();
     include "header.php";
+    // password_hash($row['password'], PASSWORD_BCRYPT);
 ?>
 <style>
     .unknown-div {
@@ -75,10 +76,10 @@
                         </div>
                     </div>
                     
-                    <div style="display: none;">
-                        <label>Email</label>
+                    <div>
+                        <label>Change Your Password</label>
                         <div class='input-div'>                      
-                            <input type="text" style="margin-left:5px; border-radius:12px;" name="email" placeholder=""value='<?php echo $row['email']?>' class="form-control" >
+                            <input type="text" style="margin-left:5px; border-radius:12px;" name="password" placeholder=""value='' class="form-control" >
                         </div>
                     </div>
                     
@@ -88,7 +89,7 @@
             <div style="width:70%; display:flex; flex-direction:column; padding:15px; align-items:center">
                 <label for="gender">Gender</label>
                 <select class="form-control allcompanys" name="gender" id="gender" style="width:55%;">
-                    <option value="<?php echo $row['gender']?>"><?php echo $row['gender']?></option> <!-- Prompt option -->
+                    <option value="<?php echo $row['gender']?>"><?php echo $row['gender']?></option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option> 
                 </select>
