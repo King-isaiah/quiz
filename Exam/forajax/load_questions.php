@@ -1,7 +1,7 @@
 <?php 
 session_start();
-include "header.php";
-include "../superbase/config.php";
+include "../header.php";
+include "../../superbase/config.php";
 
 if (!isset($_SESSION['userssname'])) {
     echo "<script type='text/javascript'>window.location.href='login.php';</script>";
