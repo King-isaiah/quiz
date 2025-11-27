@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="footer-copy-right">
-                            <p>Designed and developed by Afuwape Eshiozemhe</p>
+                            <p>Developed by Afuwape Eshiozemhe</p>
                         </div>
                     </div>
                 </div>

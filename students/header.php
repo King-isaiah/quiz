@@ -1,4 +1,4 @@
-<?php //session_start()?>
+<?php ob_start(); //session_start()?>
 <?php 
    
     if(!isset($_SESSION['unique_id'])){

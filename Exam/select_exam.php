@@ -39,7 +39,7 @@ if ($numRows > 0) {
 <div class="row" style="margin: 0px; padding:0px; margin-bottom: 50px;">
     
     <div class="col-lg-6 col-lg-push-3" style="min-height: 500px; background-color: white;">
-        <div class="col-lg-6 col-lg-push-3" style="min-height: 500px; width: 70%;  background-color: white;">
+        <div class="col-lg-6 col-lg-push-3" style="min-height: 500px; width: 80%;  background-color: white;">
             <h1 style="color:black;">Exam Instructions</h1>
                                     
             <li>READ THE INSTRUCTIONS CLEARLY</li>
@@ -48,6 +48,7 @@ if ($numRows > 0) {
             <li>pay attention to the number of questions at the top right corner of above the questions to know how many questions you have</li>
             <li>once you reach the last question the next buttton would submit your exams</li>
             <li>The counter or countdown counts from hours to minutes to seconds to mili seconds</li>
+            <li>Try not to refresh this page</li>
             <li>once you start the exam do not make efffort to leave the page as the page would stil 
                 consider you writing the exam and would mark you after your time runs out</li>
             <li>Once you are done with your exams and have been directed to the reult page do not for any reason refresh your page</li>
