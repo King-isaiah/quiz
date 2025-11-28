@@ -28,8 +28,8 @@
         exit();
     }
       // CLEAR SESSION CACHE WHEN STARTING NEW EXAM
-    // unset($_SESSION['questions_order']);
-    // unset($_SESSION['answer']);
+    unset($_SESSION['questions_order']);
+    unset($_SESSION['answer']);
 ?>
 
 <div class="row" style="margin: 0px; padding:0px; margin-bottom: 50px;">
