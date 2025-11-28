@@ -61,6 +61,6 @@ if (isset($question_order[$question_index])) {
     }
     echo "</table>";
 } else {
-    echo "over"; // No question found
+    echo "over"; 
 }
 ?>

@@ -116,6 +116,7 @@
             }
         };
         xmlhttp.open("GET","Exam/forajax/save_answer_in_session.php?questionno="+ questionno +"&value1="+radiovalue, true);
+        
         // xmlhttp.open("GET","forajax/save_answer_in_session.php?questionno="+ questionno +"&value1="+radiovalue, true);
         xmlhttp.send(null);
         
