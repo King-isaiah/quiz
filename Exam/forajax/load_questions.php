@@ -1,6 +1,6 @@
 <?php 
 session_start();
-include "../header.php";
+// include "../header.php";
 include "../../superbase/config.php";
 
 if (!isset($_SESSION['userssname'])) {
