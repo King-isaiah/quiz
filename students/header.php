@@ -10,7 +10,7 @@
 
     
 
-    $sessionTimeout = 1 * 60 * 60; // 1 hours in seconds
+    $sessionTimeout = 3 * 60 * 60; // 1 hours in seconds
 
     if (!isset($_SESSION['last_activity'])) {
         $_SESSION['last_activity'] = time(); 
