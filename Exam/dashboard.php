@@ -2,12 +2,12 @@
 <?php 
     include "header.php";
     // include "connection.php";
-    include "../superbase/config.php"; // Added Supabase config
+    include "../superbase/config.php"; 
     $unique = $_SESSION['unique_id'];
     $examName =  $_SESSION['catsexam'];
    echo  $examName;
     
-    // Comment out local MySQL connection and replace with Supabase
+    
     /*
     $check = mysqli_query($link, "SELECT * FROM exam_results WHERE unique_id = '$unique' && exam_type = '$examName' ");
     $numRows = mysqli_num_rows($check);
@@ -94,7 +94,7 @@
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 if (xmlhttp.responseText === "over") {
-                    window.location.href = "result.php"; // Redirect if no questions left
+                    window.location.href = "result.php"; 
                 } else {
                     document.getElementById("load_questions").innerHTML = xmlhttp.responseText;
                     load_total_que(); // Call this if you need to update total questions display

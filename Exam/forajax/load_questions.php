@@ -125,5 +125,5 @@ if (isset($_SESSION["end_time"])) {
     unset($_SESSION["end_time"]);
 }
 
-include "footer.php";
+// include "footer.php";
 ?>
