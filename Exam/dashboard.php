@@ -13,7 +13,7 @@
     $numRows = mysqli_num_rows($check);
     */
     
-    // Supabase equivalent
+
     $response = fetchData('exam_results?unique_id=eq.' . $unique . '&exam_type=eq.' . urlencode($examName));
     $numRows = is_array($response) ? count($response) : 0;
     

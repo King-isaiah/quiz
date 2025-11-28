@@ -22,7 +22,7 @@ $queno = intval($_GET['questionno']);
 $question_order = $_SESSION['questions_order'];
 
 // Calculate actual question index in shuffled order
-$question_index = $queno - 1; // Convert to zero-based index
+$question_index = $queno - 1; 
 
 // Validate and get the current question
 if (isset($question_order[$question_index])) {
