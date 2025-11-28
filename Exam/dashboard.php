@@ -75,7 +75,7 @@
             }
         };
         // xmlhttp.open("GET","forajax/load_total_que.php", true);
-        xmlhttp.open("GET","/Exam/forajax/load_total_que.php", true);
+        xmlhttp.open("GET","forajax/load_total_que.php", true);
         xmlhttp.send(null);
     }
     
