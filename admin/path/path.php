@@ -1,17 +1,16 @@
 <?php 
 session_start();
-
-include('../../connection.php');
+include "../../superbase/config.php";
 
 $editFormAction = $_SERVER['PHP_SELF'];
 
+// Fetch users from registration table using Supabase
+$users_response = fetchData('registration');
+$row_username = is_array($users_response) && !isset($users_response['error']) ? $users_response : [];
 
-$query_username = mysqli_query($link, "SELECT id, username FROM registration") or die(mysqli_error($mysqli));
-$row_username = mysqli_fetch_assoc($query_username);
-
-$query_category = mysqli_query($link, "SELECT id, category FROM exam_category ORDER BY year ASC") or die(mysqli_error($mysqli));
-$row_category = mysqli_fetch_assoc($query_category);
-
+// Fetch exam categories from Supabase ordered by year
+$categories_response = universalFetch('exam_category', [], [], 'year');
+$row_category = is_array($categories_response) && !isset($categories_response['error']) ? $categories_response : [];
 
 ?>
 <head>
@@ -41,18 +40,18 @@ $row_category = mysqli_fetch_assoc($query_category);
                                             <select id="users" class="form-control" name="username" required>
                                                 <option value="">Select Sub Group</option>
                                                 <?php
-                                                    do {  
+                                                if (is_array($row_username) && count($row_username) > 0) {
+                                                    foreach ($row_username as $user) {  
                                                 ?>
-                                                <option value="<?php echo $row_username['username']?>">
-                                                    <?php echo $row_username['username']?></option>
+                                                <option value="<?php echo htmlspecialchars($user['username'] ?? '') ?>">
+                                                    <?php echo htmlspecialchars($user['username'] ?? '') ?></option>
                                                 <?php
-                                                    } 
-                                                    while ($row_username = mysqli_fetch_assoc($query_username));
-                                                    $rows = mysqli_num_rows($query_username);
-                                                    if($rows > 0) {
-                                                        mysqli_data_seek($query_username, 0);
-                                                        $row_username = mysqli_fetch_assoc($query_username);
                                                     }
+                                                } else {
+                                                ?>
+                                                <option value="">No users available</option>
+                                                <?php
+                                                }
                                                 ?>
                                             </select>
                                                                             
@@ -82,17 +81,19 @@ $row_category = mysqli_fetch_assoc($query_category);
                                             <select id="category" class="form-control" name="category" required>
                                                 <option value="" >Select Sub Group</option>
                                                 <?php
-                                                    do {  
+                                                if (is_array($row_category) && count($row_category) > 0) {
+                                                    foreach ($row_category as $category) {  
                                                 ?>
-                                                <option value="<?php echo $row_category['category']?>">
-                                                    <?php echo $row_category['category']?></option>
+                                                <option value="<?php echo htmlspecialchars($category['category'] ?? '') ?>">
+                                                    <?php echo htmlspecialchars($category['category'] ?? '') ?></option>
                                                 <?php
-                                                } while ($row_category = mysqli_fetch_assoc($query_category));
-                                                $rows = mysqli_num_rows($query_category);
-                                                if($rows > 0) {
-                                                    mysqli_data_seek($query_category, 0);
-                                                    $row_category = mysqli_fetch_assoc($query_category);
-                                                }?>
+                                                    }
+                                                } else {
+                                                ?>
+                                                <option value="">No categories available</option>
+                                                <?php
+                                                }
+                                                ?>
                                             </select>
                                         </div>
                                     
@@ -126,5 +127,3 @@ $row_category = mysqli_fetch_assoc($query_category);
        
     </script>
 </body>
-
-
