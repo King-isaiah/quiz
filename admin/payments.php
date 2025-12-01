@@ -160,9 +160,9 @@
                                         <?php 
                                             function generateCourseSelect($link) {
                                             //     // Check database preference
-                                            //     $useLocal = isset($_COOKIE['useLocalDB']) && $_COOKIE['useLocalDB'] === 'true';
+                                                $useLocal = isset($_COOKIE['useLocalDB']) && $_COOKIE['useLocalDB'] === 'true';
                                                 
-                                            //     if ($useLocal) {
+                                                if ($useLocal) {
                                             //         // Use Local MySQL
                                             //         $res = mysqli_query($link, "SELECT * FROM exam_category");
 
@@ -170,8 +170,8 @@
                                             //             die("Database query failed: " . mysqli_error($link));
                                             //         }
                                                 
-                                            //         $selectHTML = '<select name="examSubject" id="category" style="padding: 10px; border-radius: 4px;">';
-                                            //         $selectHTML .= "<option value=''>Select Exam</option>";
+                                                    $selectHTML = '<select name="examSubject" id="category" style="padding: 10px; border-radius: 4px;">';
+                                                    $selectHTML .= "<option value=''>Select Exam</option>";
                                                 
                                             //         while ($row = mysqli_fetch_assoc($res)) {
                                             //             $name = $row['category'];                                        
@@ -179,7 +179,7 @@
                                             //         }
 
                                             //         mysqli_free_result($res);
-                                            //     } else {
+                                                } else {
                                             //         // Use Supabase
                                                     $response = fetchData('exam_category');
                                                     
@@ -194,7 +194,7 @@
                                                     } else {
                                                         $selectHTML .= "<option value=''>No exams available</option>";
                                                     }
-                                                // }
+                                                }
 
                                                 $selectHTML .= '</select>';
                                                 return $selectHTML;
