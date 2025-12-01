@@ -26,35 +26,35 @@ include "../superbase/config.php"; // Supabase connection
                             <form action="" method="post">
                                 <div style="padding-left: 30em; display: flex; align-items: center; gap: 10px;"> 
                                     <?php
-                                        // function generateCategorySelect($link) {
-                                        //     // Check database preference from cookie
-                                        //     $useLocal = isset($_COOKIE['useLocalDB']) && $_COOKIE['useLocalDB'] === 'true';
+                                        function generateCategorySelect($link) {
+                                            // Check database preference from cookie
+                                            $useLocal = isset($_COOKIE['useLocalDB']) && $_COOKIE['useLocalDB'] === 'true';
                                             
-                                        //     if ($useLocal) {
-                                        //         // Use Local MySQL
-                                        //         $res = mysqli_query($link, "SELECT * FROM exam_category");
+                                            if ($useLocal) {
+                                                // Use Local MySQL
+                                                // $res = mysqli_query($link, "SELECT * FROM exam_category");
 
-                                        //         if (!$res) {
-                                        //             die("Database query failed: " . mysqli_error($link));
-                                        //         }
-                                        //         $currentYear = date("Y");
+                                                // if (!$res) {
+                                                //     die("Database query failed: " . mysqli_error($link));
+                                                // }
+                                                $currentYear = date("Y");
                                                 
-                                        //         $selectHTML = '<select name="examSubject" id="category" style="padding: 10px; border-radius: 4px;">';
-                                        //         if (!isset($_SESSION['exam_subject'])) {
-                                        //             $selectHTML .= "<option value=''>{$currentYear}  Select year</option>";
-                                        //         } else {
-                                        //             $selectHTML .= "<option value=''>Select Year</option>";
-                                        //         }
-                                        //         while ($row = mysqli_fetch_assoc($res)) {
-                                        //             $id = $row['id']; 
-                                        //             $year = $row['year']; 
-                                        //             $name = $row['category'];                                        
-                                        //             $selectHTML .= "<option value=\"$name\">$year</option>";                                       
-                                        //         }
+                                                $selectHTML = '<select name="examSubject" id="category" style="padding: 10px; border-radius: 4px;">';
+                                                if (!isset($_SESSION['exam_subject'])) {
+                                                    $selectHTML .= "<option value=''>{$currentYear}  Select year</option>";
+                                                } else {
+                                                    $selectHTML .= "<option value=''>Select Year</option>";
+                                                }
+                                                // while ($row = mysqli_fetch_assoc($res)) {
+                                                //     $id = $row['id']; 
+                                                //     $year = $row['year']; 
+                                                //     $name = $row['category'];                                        
+                                                //     $selectHTML .= "<option value=\"$name\">$year</option>";                                       
+                                                // }
 
-                                        //         mysqli_free_result($res);
-                                        //     } else {
-                                        //         // Use Supabase
+                                                // mysqli_free_result($res);
+                                            } else {
+                                                // Use Supabase
                                                 $response = fetchData('exam_category');
                                                 
                                                 $currentYear = date("Y");
@@ -76,11 +76,11 @@ include "../superbase/config.php"; // Supabase connection
                                                 } else {
                                                     $selectHTML .= "<option value=''>No categories available</option>";
                                                 }
-                                        //     }
+                                            }
 
                                             $selectHTML .= '</select>';
                                             return $selectHTML;
-                                        // }
+                                        }
                                     
                                         // echo generateCategorySelect($link); 
                                     ?>
