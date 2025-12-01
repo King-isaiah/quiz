@@ -1,39 +1,39 @@
 <?php
     // include "../../connection.php";
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $selectedId = $_POST['selected_id'];
-        $selectedCategory = $_POST['selected_category'];
+    // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    //     $selectedId = $_POST['selected_id'];
+    //     $selectedCategory = $_POST['selected_category'];
 
-        $countSql = "SELECT COUNT(*) as count FROM exam_category WHERE countDown = 'active'";
-        $countResult = $link->query($countSql);
-        $countRow = $countResult->fetch_assoc();
-        $count = $countRow['count'];
+    //     $countSql = "SELECT COUNT(*) as count FROM exam_category WHERE countDown = 'active'";
+    //     $countResult = $link->query($countSql);
+    //     $countRow = $countResult->fetch_assoc();
+    //     $count = $countRow['count'];
 
-    if ($count <= 0) {
-            // Update selected category
-            $updateSql = "UPDATE exam_category SET countDown = 'active' WHERE id = ?";
-            $stmt = $link->prepare($updateSql);
-            $stmt->bind_param("i", $selectedId);
-            $stmt->execute();
-            $stmt->close();
-        } else {
-            // Update currently active category to inactive
-            $inactiveSql = "UPDATE exam_category SET countDown = 'inactive' WHERE countDown = 'active'";
-            $link->query($inactiveSql);
+    // if ($count <= 0) {
+    //         // Update selected category
+    //         $updateSql = "UPDATE exam_category SET countDown = 'active' WHERE id = ?";
+    //         $stmt = $link->prepare($updateSql);
+    //         $stmt->bind_param("i", $selectedId);
+    //         $stmt->execute();
+    //         $stmt->close();
+    //     } else {
+    //         // Update currently active category to inactive
+    //         $inactiveSql = "UPDATE exam_category SET countDown = 'inactive' WHERE countDown = 'active'";
+    //         $link->query($inactiveSql);
 
-            // Update the selected category to active
-            $updateSql = "UPDATE exam_category SET countDown = 'active' WHERE id = ?";
-            $stmt = $link->prepare($updateSql);
-            $stmt->bind_param("i", $selectedId);
-            $stmt->execute();
-            $stmt->close();
-        }
+    //         // Update the selected category to active
+    //         $updateSql = "UPDATE exam_category SET countDown = 'active' WHERE id = ?";
+    //         $stmt = $link->prepare($updateSql);
+    //         $stmt->bind_param("i", $selectedId);
+    //         $stmt->execute();
+    //         $stmt->close();
+    //     }
 
-        echo $selectedCategory . " Countdown updated successfully.";
-    } else {
-        echo "Invalid request.";
-    }
+    //     echo $selectedCategory . " Countdown updated successfully.";
+    // } else {
+    //     echo "Invalid request.";
+    // }
 ?>
 <?php
     include "../../superbase/config.php";
