@@ -43,8 +43,8 @@ if (is_array($response) && !isset($response['error'])) {
     }
 }
 
-header('Content-Type: application/json');
-header('X-Content-Type-Options: nosniff');
+// header('Content-Type: application/json');
+// header('X-Content-Type-Options: nosniff');
 echo json_encode($data);
 ?> 
 
