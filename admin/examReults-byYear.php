@@ -26,61 +26,93 @@ include "../superbase/config.php"; // Supabase connection
                             <form action="" method="post">
                                 <div style="padding-left: 30em; display: flex; align-items: center; gap: 10px;"> 
                                     <?php
-                                        function generateCategorySelect($link) {
-                                            // Check database preference from cookie
-                                            $useLocal = isset($_COOKIE['useLocalDB']) && $_COOKIE['useLocalDB'] === 'true';
+                                        // function generateCategorySelect($link) {
+                                        //     // Check database preference from cookie
+                                        //     $useLocal = isset($_COOKIE['useLocalDB']) && $_COOKIE['useLocalDB'] === 'true';
                                             
-                                            if ($useLocal) {
-                                                // Use Local MySQL
-                                                // $res = mysqli_query($link, "SELECT * FROM exam_category");
+                                        //     if ($useLocal) {
+                                        //         // Use Local MySQL
+                                        //         // $res = mysqli_query($link, "SELECT * FROM exam_category");
 
-                                                // if (!$res) {
-                                                //     die("Database query failed: " . mysqli_error($link));
-                                                // }
-                                                $currentYear = date("Y");
+                                        //         // if (!$res) {
+                                        //         //     die("Database query failed: " . mysqli_error($link));
+                                        //         // }
+                                        //         $currentYear = date("Y");
                                                 
-                                                $selectHTML = '<select name="examSubject" id="category" style="padding: 10px; border-radius: 4px;">';
-                                                if (!isset($_SESSION['exam_subject'])) {
-                                                    $selectHTML .= "<option value=''>{$currentYear}  Select year</option>";
-                                                } else {
-                                                    $selectHTML .= "<option value=''>Select Year</option>";
-                                                }
-                                                // while ($row = mysqli_fetch_assoc($res)) {
-                                                //     $id = $row['id']; 
-                                                //     $year = $row['year']; 
-                                                //     $name = $row['category'];                                        
-                                                //     $selectHTML .= "<option value=\"$name\">$year</option>";                                       
-                                                // }
+                                        //         $selectHTML = '<select name="examSubject" id="category" style="padding: 10px; border-radius: 4px;">';
+                                        //         if (!isset($_SESSION['exam_subject'])) {
+                                        //             $selectHTML .= "<option value=''>{$currentYear}  Select year</option>";
+                                        //         } else {
+                                        //             $selectHTML .= "<option value=''>Select Year</option>";
+                                        //         }
+                                        //         // while ($row = mysqli_fetch_assoc($res)) {
+                                        //         //     $id = $row['id']; 
+                                        //         //     $year = $row['year']; 
+                                        //         //     $name = $row['category'];                                        
+                                        //         //     $selectHTML .= "<option value=\"$name\">$year</option>";                                       
+                                        //         // }
 
-                                                // mysqli_free_result($res);
-                                            } else {
-                                                // Use Supabase
-                                                $response = fetchData('exam_category');
+                                        //         // mysqli_free_result($res);
+                                        //     } else {
+                                        //         // Use Supabase
+                                        //         $response = fetchData('exam_category');
                                                 
-                                                $currentYear = date("Y");
+                                        //         $currentYear = date("Y");
                                                 
-                                                $selectHTML = '<select name="examSubject" id="category" style="padding: 10px; border-radius: 4px;">';
-                                                if (!isset($_SESSION['exam_subject'])) {
-                                                    $selectHTML .= "<option value=''>{$currentYear} Select Year</option>";
-                                                } else {
-                                                    $selectHTML .= "<option value=''>Select Year</option>";
-                                                }
+                                        //         $selectHTML = '<select name="examSubject" id="category" style="padding: 10px; border-radius: 4px;">';
+                                        //         if (!isset($_SESSION['exam_subject'])) {
+                                        //             $selectHTML .= "<option value=''>{$currentYear} Select Year</option>";
+                                        //         } else {
+                                        //             $selectHTML .= "<option value=''>Select Year</option>";
+                                        //         }
                                                 
-                                                if (is_array($response) && count($response) > 0 && !isset($response['error'])) {
-                                                    foreach ($response as $row) {
-                                                        $id = $row['id']; 
-                                                        $year = $row['year'] ?? $row['category']; 
-                                                        $name = $row['category'];                                        
-                                                        $selectHTML .= "<option value=\"$name\">$year</option>";                                       
-                                                    }
-                                                } else {
-                                                    $selectHTML .= "<option value=''>No categories available</option>";
-                                                }
-                                            }
+                                        //         if (is_array($response) && count($response) > 0 && !isset($response['error'])) {
+                                        //             foreach ($response as $row) {
+                                        //                 $id = $row['id']; 
+                                        //                 $year = $row['year'] ?? $row['category']; 
+                                        //                 $name = $row['category'];                                        
+                                        //                 $selectHTML .= "<option value=\"$name\">$year</option>";                                       
+                                        //             }
+                                        //         } else {
+                                        //             $selectHTML .= "<option value=''>No categories available</option>";
+                                        //         }
+                                        //     }
 
-                                            $selectHTML .= '</select>';
-                                            return $selectHTML;
-                                        }
+                                        //     $selectHTML .= '</select>';
+                                        //     return $selectHTML;
+                                        // }
+function generateCategorySelect() {
+    // Include Supabase config
+    require_once '../../superbase/config.php';
+    
+    // Fetch categories from Supabase
+    $response = fetchData('exam_category');
+    
+    $currentYear = date("Y");
+    
+    $selectHTML = '<select name="examSubject" id="category" style="padding: 10px; border-radius: 4px;">';
+    
+    // Set default option
+    if (!isset($_SESSION['exam_subject'])) {
+        $selectHTML .= "<option value=''>{$currentYear} Select Year</option>";
+    } else {
+        $selectHTML .= "<option value=''>Select Year</option>";
+    }
+    
+    // Add category options from Supabase
+    if (is_array($response) && count($response) > 0 && !isset($response['error'])) {
+        foreach ($response as $row) {
+            $year = $row['year'] ?? $row['category']; 
+            $name = $row['category'];                                        
+            $selectHTML .= "<option value=\"$name\">$year</option>";                                       
+        }
+    } else {
+        $selectHTML .= "<option value=''>No categories available</option>";
+    }
+
+    $selectHTML .= '</select>';
+    return $selectHTML;
+}
                                     
                                         // echo generateCategorySelect($link); 
                                     ?>
