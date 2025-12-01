@@ -158,7 +158,7 @@
                                         </button>
 
                                         <?php 
-                                            // function generateCourseSelect($link) {
+                                            function generateCourseSelect($link) {
                                             //     // Check database preference
                                             //     $useLocal = isset($_COOKIE['useLocalDB']) && $_COOKIE['useLocalDB'] === 'true';
                                                 
@@ -181,24 +181,24 @@
                                             //         mysqli_free_result($res);
                                             //     } else {
                                             //         // Use Supabase
-                                            //         $response = fetchData('exam_category');
+                                                    $response = fetchData('exam_category');
                                                     
-                                            //         $selectHTML = '<select name="examSubject" id="category" style="padding: 10px; border-radius: 4px;">';
-                                            //         $selectHTML .= "<option value=''>Select Exam</option>";
+                                                    $selectHTML = '<select name="examSubject" id="category" style="padding: 10px; border-radius: 4px;">';
+                                                    $selectHTML .= "<option value=''>Select Exam</option>";
                                                     
-                                            //         if (is_array($response) && count($response) > 0 && !isset($response['error'])) {
-                                            //             foreach ($response as $row) {
-                                            //                 $name = $row['category'];                                        
-                                            //                 $selectHTML .= "<option value=\"$name\">$name</option>";                                       
-                                            //             }
-                                            //         } else {
-                                            //             $selectHTML .= "<option value=''>No exams available</option>";
-                                            //         }
-                                            //     }
+                                                    if (is_array($response) && count($response) > 0 && !isset($response['error'])) {
+                                                        foreach ($response as $row) {
+                                                            $name = $row['category'];                                        
+                                                            $selectHTML .= "<option value=\"$name\">$name</option>";                                       
+                                                        }
+                                                    } else {
+                                                        $selectHTML .= "<option value=''>No exams available</option>";
+                                                    }
+                                                // }
 
-                                            //     $selectHTML .= '</select>';
-                                            //     return $selectHTML;
-                                            // }
+                                                $selectHTML .= '</select>';
+                                                return $selectHTML;
+                                            }
 
                                             // echo generateCourseSelect($link); 
                                         ?>

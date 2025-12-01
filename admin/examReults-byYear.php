@@ -55,31 +55,31 @@ include "../superbase/config.php"; // Supabase connection
                                         //         mysqli_free_result($res);
                                         //     } else {
                                         //         // Use Supabase
-                                        //         $response = fetchData('exam_category');
+                                                $response = fetchData('exam_category');
                                                 
-                                        //         $currentYear = date("Y");
+                                                $currentYear = date("Y");
                                                 
-                                        //         $selectHTML = '<select name="examSubject" id="category" style="padding: 10px; border-radius: 4px;">';
-                                        //         if (!isset($_SESSION['exam_subject'])) {
-                                        //             $selectHTML .= "<option value=''>{$currentYear} Select Year</option>";
-                                        //         } else {
-                                        //             $selectHTML .= "<option value=''>Select Year</option>";
-                                        //         }
+                                                $selectHTML = '<select name="examSubject" id="category" style="padding: 10px; border-radius: 4px;">';
+                                                if (!isset($_SESSION['exam_subject'])) {
+                                                    $selectHTML .= "<option value=''>{$currentYear} Select Year</option>";
+                                                } else {
+                                                    $selectHTML .= "<option value=''>Select Year</option>";
+                                                }
                                                 
-                                        //         if (is_array($response) && count($response) > 0 && !isset($response['error'])) {
-                                        //             foreach ($response as $row) {
-                                        //                 $id = $row['id']; 
-                                        //                 $year = $row['year'] ?? $row['category']; 
-                                        //                 $name = $row['category'];                                        
-                                        //                 $selectHTML .= "<option value=\"$name\">$year</option>";                                       
-                                        //             }
-                                        //         } else {
-                                        //             $selectHTML .= "<option value=''>No categories available</option>";
-                                        //         }
+                                                if (is_array($response) && count($response) > 0 && !isset($response['error'])) {
+                                                    foreach ($response as $row) {
+                                                        $id = $row['id']; 
+                                                        $year = $row['year'] ?? $row['category']; 
+                                                        $name = $row['category'];                                        
+                                                        $selectHTML .= "<option value=\"$name\">$year</option>";                                       
+                                                    }
+                                                } else {
+                                                    $selectHTML .= "<option value=''>No categories available</option>";
+                                                }
                                         //     }
 
-                                        //     $selectHTML .= '</select>';
-                                        //     return $selectHTML;
+                                            $selectHTML .= '</select>';
+                                            return $selectHTML;
                                         // }
                                     
                                         // echo generateCategorySelect($link); 
