@@ -1,7 +1,5 @@
 <?php
-// header('Content-Type: application/json');
 
-// include('../../connection.php');
 include('../../superbase/config.php');
 
 $response = ['success' => false, 'message' => ''];
@@ -10,18 +8,16 @@ if (isset($_GET['username'])) {
     $username = trim($_GET['username']);
     
     try {
-        // Prepare and execute query
-        $stmt = $link->prepare("SELECT 	unique_id, email FROM registration WHERE username = ?");
-        $stmt->bind_param("s", $username);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        // Fetch user from Supabase using universalFetch with username filter
+        $userData = universalFetch('registration', ['username' => $username], ['unique_id', 'email']);
         
-        if ($result->num_rows > 0) {
-            $userData = $result->fetch_assoc();
+        if (is_array($userData) && !isset($userData['error']) && count($userData) > 0) {
+            // Get the first matching user
+            $user = $userData[0];
             $response = [
                 'success' => true,
-                'unique_id' => $userData['unique_id'],
-                'email' => $userData['email']
+                'unique_id' => $user['unique_id'] ?? '',
+                'email' => $user['email'] ?? ''
             ];
         } else {
             $response['message'] = 'User not found';
@@ -33,5 +29,6 @@ if (isset($_GET['username'])) {
     $response['message'] = 'Username not provided';
 }
 
+header('Content-Type: application/json');
 echo json_encode($response);
 ?>
