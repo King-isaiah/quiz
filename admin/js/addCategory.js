@@ -34,7 +34,7 @@ continueBtn.onclick = () => {
                     if (response.success) {
                         showToast(response.message, 'success');
                         setTimeout(() => {
-                            location.href = "/quiz/admin/exam_category.php";
+                            location.href = "/admin/exam_category.php";
                         }, 1500); // Redirect after 1.5 seconds to see the toast
                     } else {
                         showToast(response.message, 'error');
