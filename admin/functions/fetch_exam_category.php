@@ -25,7 +25,8 @@
 include "../../superbase/config.php";
 
 // Fetch all exam categories from Supabase sorted by ID descending
-$response = fetchData('exam_category?order=id.desc');
+// $response = fetchData('exam_category?order=id.desc');
+$response = fetchData('exam_category');
 
 $data = [];
 

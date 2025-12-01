@@ -226,7 +226,7 @@ include "../superbase/config.php";
                         }                  
                     }                  
                 ]
-                });
+            });
         });
     </script>
 </div>
