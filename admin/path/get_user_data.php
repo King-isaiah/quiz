@@ -1,7 +1,8 @@
 <?php
-header('Content-Type: application/json');
+// header('Content-Type: application/json');
 
-include('../../connection.php');
+// include('../../connection.php');
+include('../../superbase/config.php');
 
 $response = ['success' => false, 'message' => ''];
 

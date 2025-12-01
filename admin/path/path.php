@@ -38,7 +38,7 @@ $row_category = is_array($categories_response) && !isset($categories_response['e
                                         <div class="form-group">
                                             <label>Students/Users</label>
                                             <select id="users" class="form-control" name="username" required>
-                                                <option value="">Select Sub Group</option>
+                                                <option value="">Select Student</option>
                                                 <?php
                                                 if (is_array($row_username) && count($row_username) > 0) {
                                                     foreach ($row_username as $user) {  
@@ -49,7 +49,7 @@ $row_category = is_array($categories_response) && !isset($categories_response['e
                                                     }
                                                 } else {
                                                 ?>
-                                                <option value="">No users available</option>
+                                                <option value="">No Student available</option>
                                                 <?php
                                                 }
                                                 ?>
@@ -79,7 +79,7 @@ $row_category = is_array($categories_response) && !isset($categories_response['e
                                         <div class="form-group">
                                             <label>Category/Exam</label>
                                             <select id="category" class="form-control" name="category" required>
-                                                <option value="" >Select Sub Group</option>
+                                                <option value="" >Select exam</option>
                                                 <?php
                                                 if (is_array($row_category) && count($row_category) > 0) {
                                                     foreach ($row_category as $category) {  

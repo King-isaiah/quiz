@@ -78,50 +78,7 @@ function submitForm(event) {
     .catch(error => console.error('Error:', error));
 }
 
-    // function Notice(message, color, duration = 3000) {
-    //     // Create notification element with more styling and animation
-    //     let notice = $('<div class="custom-notice"></div>')
-    //         .text(message)
-    //         .css({
-    //             'background-color': color,
-    //             'color': '#fff',
-    //             'padding': '12px 20px',
-    //             'margin': '10px 0',
-    //             'border-radius': '4px',
-    //             'display': 'inline-block',
-    //             'position': 'fixed',
-    //             'top': '20px',
-    //             'right': '20px',
-    //             'z-index': '9999',
-    //             'box-shadow': '0 4px 8px rgba(0,0,0,0.1)',
-    //             'font-size': '14px',
-    //             'opacity': '0',
-    //             'transition': 'opacity 0.3s ease'
-    //         });
-
-    //     // Append to body (preferably to a specific container if you have one)
-    //     $('body').append(notice);
-        
-    //     // Fade in the notification
-    //     notice.css('opacity', '1');
-        
-    //     // Auto-remove after duration
-    //     setTimeout(function() {
-    //         notice.animate({
-    //             opacity: 0
-    //         }, 500, function() {
-    //             $(this).remove();
-    //         });
-    //     }, duration);
-        
-    //     // Optional: Add click to dismiss
-    //     notice.on('click', function() {
-    //         $(this).stop().animate({ opacity: 0 }, 200, function() {
-    //             $(this).remove();
-    //         });
-    //     });
-    // }
-
+    
     // Improved Notice function with queue system
     let notificationQueue = [];
     let isShowingNotification = false;
