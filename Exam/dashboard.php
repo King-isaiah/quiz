@@ -1,15 +1,18 @@
 <?php session_start(); ?>
 <?php 
+    // Initialize answer session array if it doesn't exist
+    if (!isset($_SESSION["answer"]) || !is_array($_SESSION["answer"])) {
+        $_SESSION["answer"] = array();
+    }
+    
     include "header.php";
     // include "connection.php";
     include "../superbase/config.php"; 
     $unique = $_SESSION['unique_id'];
     $examName =  $_SESSION['catsexam'];
-    echo  $examName;
+   echo  $examName;
     
-    if (!isset($_SESSION["answer"])) {
-        $_SESSION["answer"] = array();
-    }
+    
     /*
     $check = mysqli_query($link, "SELECT * FROM exam_results WHERE unique_id = '$unique' && exam_type = '$examName' ");
     $numRows = mysqli_num_rows($check);
