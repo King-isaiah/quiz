@@ -30,7 +30,7 @@
 
         <?php
             // Pagination settings
-            $results_per_page = 2;
+            $results_per_page = 5;
             $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
             $page = max(1, $page); // Ensure page is at least 1
             $offset = ($page - 1) * $results_per_page;
