@@ -155,8 +155,8 @@ if (isset($_SESSION["exam_start"])) {
 
 
 // CLEAR SESSION CACHE AFTER EXAM COMPLETION
-// unset($_SESSION['questions_order']);
-// unset($_SESSION['answer']);
+unset($_SESSION['questions_order']);
+unset($_SESSION['answer']);
 
 // Clear session variables
 if (isset($_SESSION["exam_start"])) {
