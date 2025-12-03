@@ -4,8 +4,6 @@ session_start();
 include "../../superbase/config.php"; 
 
 if (!isset($_SESSION['questions_order']) || empty($_SESSION['questions_order'])) {
-   
-    
     // Supabase
     $response = fetchData('questions?category=eq.' . urlencode($_SESSION['exam_category']));
     $questions = is_array($response) ? $response : [];
@@ -15,6 +13,12 @@ if (!isset($_SESSION['questions_order']) || empty($_SESSION['questions_order']))
     
     // Store the shuffled questions in session
     $_SESSION['questions_order'] = $questions;
+    
+    // Create a position-to-ID mapping (NEW CRITICAL PART)
+    $_SESSION['position_to_id'] = [];
+    foreach ($questions as $position => $question) {
+        $_SESSION['position_to_id'][$position + 1] = $question['question_no'];
+    }
 }
 
 // Get the question number from the request
@@ -35,35 +39,31 @@ if (isset($question_order[$question_index])) {
     $opt3 = $current_question["opt3"];
     $opt4 = $current_question["opt4"];
 
-    // Fetch the answer if available
+    // Fetch the answer if available - USE $queno (position), not $question_no
     $ans = isset($_SESSION["answer"][$queno]) ? $_SESSION["answer"][$queno] : "";
-    // $ans = isset($_SESSION["answer"][$question_no]) ? $_SESSION["answer"][$question_no] : "";
-
+    
     // Output the question and options
     echo "<br>
     <table>
         <tr>
             <td style='font-weight: bold; font-size:18px; padding-left:5px' colspan='2'>
-                " . $question . "
+                " . htmlspecialchars($question) . "
             </td>
         </tr>
     </table>";
 
     echo "<table style='margin-left:10px'>";
     $options = [$opt1, $opt2, $opt3, $opt4];
-    // foreach ($options as $index => $option) {
-    //     echo "<tr>
-    //             <td>
-    //                 <input type='radio' name='r1' id='r{$index}' value='{$option}' onclick='radioclick(this.value, {$question_no})' ". ($ans == $option ? 'checked' : '') .">
-    //             </td>
-    //             <td style='padding-left: 10px;'>" . (strpos($option, 'images/') !== false ? "<img src='../admin/{$option}' height='30' width='30'>" : $option) . "</td>
-    //           </tr>";
-    // }
+    
     foreach ($options as $index => $option) {
+        // Escape the option for JavaScript
+        $js_option = htmlspecialchars($option, ENT_QUOTES);
+        
         echo "<tr>
                 <td>
-                    <input type='radio' name='r1' id='r{$index}' value='{$option}' 
-                        onclick='radioclick(this.value, {$queno})' ". ($ans == $option ? 'checked' : '') .">
+                    <input type='radio' name='r1' id='r{$index}' value='{$js_option}' 
+                        onclick=\"radioclick('{$js_option}', {$queno})\" 
+                        ". ($ans == $option ? 'checked' : '') . ">
                 </td>
                 <td style='padding-left: 10px;'>" . 
                     (strpos($option, 'images/') !== false ? 
@@ -71,9 +71,12 @@ if (isset($question_order[$question_index])) {
                         htmlspecialchars($option)
                     ) . 
                 "</td>
-            </tr>";
+              </tr>";
     }
     echo "</table>";
+    
+    // Debug output (optional - remove in production)
+    echo "<!-- Debug: Position=$queno, DB ID=$question_no, User Answer=" . htmlspecialchars($ans) . " -->";
 } else {
     echo "over"; 
 }

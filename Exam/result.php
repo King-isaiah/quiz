@@ -42,33 +42,52 @@ $timeSpentFormatted = sprintf("%d mins %d seconds %d milliseconds", $minutesSpen
 try {
     // Calculate results only if answers are set
     if (isset($_SESSION["answer"]) && is_array($_SESSION["answer"])) {
-        for ($i = 1; $i <= count($_SESSION["answer"]); $i++) {
-            $answer = "";
-            
-            // Comment out local MySQL connection and replace with Supabase
-            /*
-            if ($stmt = mysqli_prepare($link, "SELECT answer FROM questions WHERE category=? AND question_no=?")) {
-                mysqli_stmt_bind_param($stmt, "si", $_SESSION['exam_category'], $i);
-                mysqli_stmt_execute($stmt);
-                mysqli_stmt_bind_result($stmt, $answer);
-                mysqli_stmt_fetch($stmt);
-                mysqli_stmt_close($stmt);
-            */
-            
-            // Supabase equivalent
-            $response = fetchData('questions?category=eq.' . urlencode($_SESSION['exam_category']) . '&question_no=eq.' . $i);
-            if (is_array($response) && count($response) > 0) {
-                $answer = $response[0]['answer'];
+        // Get the position-to-ID mapping from session
+        if (!isset($_SESSION['position_to_id'])) {
+            // If mapping doesn't exist, create it from questions_order
+            if (isset($_SESSION['questions_order']) && is_array($_SESSION['questions_order'])) {
+                $_SESSION['position_to_id'] = [];
+                foreach ($_SESSION['questions_order'] as $position => $question) {
+                    $_SESSION['position_to_id'][$position + 1] = $question['question_no'];
+                }
             }
-
-            if (isset($_SESSION["answer"][$i])) {
-                if ($answer == $_SESSION["answer"][$i]) {
-                    $correct++;
+        }
+        
+        // Check each saved answer using the mapping
+        foreach ($_SESSION["answer"] as $position => $userAnswer) {
+            // Get the actual database question ID for this position
+            if (isset($_SESSION['position_to_id'][$position])) {
+                $dbQuestionId = $_SESSION['position_to_id'][$position];
+                
+                // Fetch correct answer from database using the actual ID
+                $response = fetchData('questions?category=eq.' . urlencode($_SESSION['exam_category']) . 
+                                      '&question_no=eq.' . $dbQuestionId);
+                
+                if (is_array($response) && count($response) > 0) {
+                    $correctAnswer = $response[0]['answer'];
+                    
+                    if ($correctAnswer == $userAnswer) {
+                        $correct++;
+                    } else {
+                        $wrong++;
+                    }
                 } else {
-                    $wrong++;
+                    $wrong++; // Question not found in database
                 }
             } else {
-                $wrong++; // Count unanswered questions as wrong
+                $wrong++; // Position mapping not found
+            }
+        }
+        
+        // Also count unanswered questions
+        if (isset($_SESSION['position_to_id'])) {
+            $totalQuestions = count($_SESSION['position_to_id']);
+            $answeredQuestions = count($_SESSION["answer"]);
+            $unanswered = $totalQuestions - $answeredQuestions;
+            
+            // Only add unanswered if there are more questions than answered
+            if ($unanswered > 0) {
+                $wrong += $unanswered;
             }
         }
     }
@@ -81,18 +100,14 @@ try {
 }
 
 // Count total questions
-// Comment out local MySQL connection and replace with Supabase
-/*
-if ($stmt = mysqli_prepare($link, "SELECT COUNT(*) FROM questions WHERE category=?")) {
-    mysqli_stmt_bind_param($stmt, "s", $_SESSION['exam_category']);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_bind_result($stmt, $count);
-    mysqli_stmt_fetch($stmt);
-    mysqli_stmt_close($stmt);
-*/
-// Supabase equivalent
-$response = fetchData('questions?category=eq.' . urlencode($_SESSION['exam_category']));
-$count = is_array($response) ? count($response) : 0;
+// Use the mapping if it exists, otherwise fetch from database
+if (isset($_SESSION['position_to_id'])) {
+    $count = count($_SESSION['position_to_id']);
+} else {
+    // Fallback: Supabase equivalent
+    $response = fetchData('questions?category=eq.' . urlencode($_SESSION['exam_category']));
+    $count = is_array($response) ? count($response) : 0;
+}
 
 // Display results
 $wrong = $count - $correct; // Calculate wrong answers
@@ -156,6 +171,7 @@ if (isset($_SESSION["exam_start"])) {
 
 // CLEAR SESSION CACHE AFTER EXAM COMPLETION
 unset($_SESSION['questions_order']);
+unset($_SESSION['position_to_id']);  // ADD THIS LINE
 unset($_SESSION['answer']);
 
 // Clear session variables
