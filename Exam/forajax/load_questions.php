@@ -6,7 +6,7 @@ include "../../superbase/config.php";
 if (!isset($_SESSION['questions_order']) || empty($_SESSION['questions_order'])) {
    
     
-    // Supabase equivalent
+    // Supabase
     $response = fetchData('questions?category=eq.' . urlencode($_SESSION['exam_category']));
     $questions = is_array($response) ? $response : [];
     
