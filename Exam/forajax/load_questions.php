@@ -36,8 +36,8 @@ if (isset($question_order[$question_index])) {
     $opt4 = $current_question["opt4"];
 
     // Fetch the answer if available
-    // $ans = isset($_SESSION["answer"][$queno]) ? $_SESSION["answer"][$queno] : "";
-    $ans = isset($_SESSION["answer"][$question_no]) ? $_SESSION["answer"][$question_no] : "";
+    $ans = isset($_SESSION["answer"][$queno]) ? $_SESSION["answer"][$queno] : "";
+    // $ans = isset($_SESSION["answer"][$question_no]) ? $_SESSION["answer"][$question_no] : "";
 
     // Output the question and options
     echo "<br>
