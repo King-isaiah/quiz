@@ -1,9 +1,9 @@
 <?php session_start(); ?>
 <?php 
     // Initialize answer session array if it doesn't exist
-    if (!isset($_SESSION["answer"]) || !is_array($_SESSION["answer"])) {
-        $_SESSION["answer"] = array();
-    }
+    // if (!isset($_SESSION["answer"]) || !is_array($_SESSION["answer"])) {
+    //     $_SESSION["answer"] = array();
+    // }
     
     include "header.php";
     // include "connection.php";
@@ -118,7 +118,7 @@
                
             }
         };
-        // alert('we are in ');
+        alert('we are in ');
         xmlhttp.open("GET","forajax/save_answer_in_session.php?questionno="+ questionno +"&value1="+radiovalue, true);       
         xmlhttp.send(null);        
     }
