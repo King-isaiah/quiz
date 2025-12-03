@@ -5,9 +5,11 @@
     include "../superbase/config.php"; 
     $unique = $_SESSION['unique_id'];
     $examName =  $_SESSION['catsexam'];
-   echo  $examName;
+    echo  $examName;
     
-    
+    if (!isset($_SESSION["answer"])) {
+        $_SESSION["answer"] = array();
+    }
     /*
     $check = mysqli_query($link, "SELECT * FROM exam_results WHERE unique_id = '$unique' && exam_type = '$examName' ");
     $numRows = mysqli_num_rows($check);
