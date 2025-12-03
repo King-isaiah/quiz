@@ -82,9 +82,9 @@
         <!-- Header-->
         <header id="header" class="header">
             <div class="header-menu">
-                <div class="col-sm-7">
-                    <!-- Global Database Toggle (ALWAYS VISIBLE in header) -->
-                    <div class="global-db-toggle" id="globalDbToggle" style="display: block !important;">
+                <!-- toggle header incase you need to bring it back -->
+                <div class="col-sm-7">                    
+                    <!-- <div class="global-db-toggle" id="globalDbToggle" style="display: block !important;">
                         <div class="db-toggle-container d-flex align-items-center">
                             <label class="db-toggle-switch mb-0">
                                 <input type="checkbox" id="globalDatabaseToggle">
@@ -92,7 +92,7 @@
                             </label>
                             <span id="globalDatabaseStatus" class="ml-2"></span>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="col-sm-5">
