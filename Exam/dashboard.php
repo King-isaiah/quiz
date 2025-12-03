@@ -106,8 +106,6 @@
                 }
             }
         };
-
-        // xmlhttp.open("GET", "forajax/load_questions.php?questionno=" + questionno, true);
         xmlhttp.open("GET", "forajax/load_questions.php?questionno=" + questionno, true);
         xmlhttp.send(null);
     }

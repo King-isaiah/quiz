@@ -59,19 +59,19 @@ if (isset($question_order[$question_index])) {
     //           </tr>";
     // }
     foreach ($options as $index => $option) {
-    echo "<tr>
-            <td>
-                <input type='radio' name='r1' id='r{$index}' value='{$option}' 
-                    onclick='radioclick(this.value, {$queno})' ". ($ans == $option ? 'checked' : '') .">
-            </td>
-            <td style='padding-left: 10px;'>" . 
-                (strpos($option, 'images/') !== false ? 
-                    "<img src='../admin/{$option}' height='30' width='30'>" : 
-                    htmlspecialchars($option)
-                ) . 
-            "</td>
-          </tr>";
-}
+        echo "<tr>
+                <td>
+                    <input type='radio' name='r1' id='r{$index}' value='{$option}' 
+                        onclick='radioclick(this.value, {$queno})' ". ($ans == $option ? 'checked' : '') .">
+                </td>
+                <td style='padding-left: 10px;'>" . 
+                    (strpos($option, 'images/') !== false ? 
+                        "<img src='../admin/{$option}' height='30' width='30'>" : 
+                        htmlspecialchars($option)
+                    ) . 
+                "</td>
+            </tr>";
+    }
     echo "</table>";
 } else {
     echo "over"; 

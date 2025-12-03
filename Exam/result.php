@@ -33,7 +33,8 @@ if ($totalSecondsSpent < 0) {
 }
 
 $minutesSpent = floor($totalSecondsSpent / 60);
-$remainingSeconds = floor($totalSecondsSpent % 60);
+// $remainingSeconds = floor($totalSecondsSpent % 60);
+$remainingSeconds = floor(intval($totalSecondsSpent) % 60);
 $millisecondsSpent = round(($totalSecondsSpent - floor($totalSecondsSpent)) * 1000);
 
 $timeSpentFormatted = sprintf("%d mins %d seconds %d milliseconds", $minutesSpent, $remainingSeconds, $millisecondsSpent);
