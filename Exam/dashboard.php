@@ -118,7 +118,8 @@
                
             }
         };
-        alert('we are in ');
+        // alert('we are in ');
+        console.log('we are in ');
         xmlhttp.open("GET","forajax/save_answer_in_session.php?questionno="+ questionno +"&value1="+radiovalue, true);       
         xmlhttp.send(null);        
     }

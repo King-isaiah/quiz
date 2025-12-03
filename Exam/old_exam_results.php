@@ -2,7 +2,7 @@
 <?php
     include "header.php";
     // include "connection.php"; 
-    include "../superbase/config.php"; // Added Supabase config
+    include "../superbase/config.php"; 
 ?>
 
 <div class="row" style="margin: 0px; padding:0px; margin-bottom: 50px;">
@@ -30,7 +30,7 @@
 
         <?php
             // Pagination settings
-            $results_per_page = 7;
+            $results_per_page = 2;
             $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
             $page = max(1, $page); // Ensure page is at least 1
             $offset = ($page - 1) * $results_per_page;
