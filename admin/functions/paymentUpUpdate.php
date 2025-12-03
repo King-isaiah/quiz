@@ -7,9 +7,9 @@ $mess = [];
 try {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Collect and sanitize the input data
-        $username = isset($_POST['username']) ? strtoupper(trim($_POST['username'])) : null;
-        $category = isset($_POST['category']) ? strtoupper(trim($_POST['category'])) : null;
-        $status = isset($_POST['status']) ? strtoupper(trim($_POST['status'])) : null;
+        $username = isset($_POST['username']) ? trim($_POST['username']) : null;
+        $category = isset($_POST['category']) ? trim($_POST['category']) : null;
+        $status = isset($_POST['status']) ? trim($_POST['status']) : null;
         $unique_id = isset($_POST['unique_id']) ? strtoupper(trim($_POST['unique_id'])) : null;
         $email = isset($_POST['student_email']) ? strtoupper(trim($_POST['student_email'])) : null;
         $current_time = date('Y-m-d H:i:s');
@@ -23,7 +23,7 @@ try {
         $existingRecords = universalFetch('customer_details', ['unique_id' => $unique_id]);
         
         if (is_array($existingRecords) && !isset($existingRecords['error']) && count($existingRecords) > 0) {
-            // Update existing record using updateUserStatus (for unique_id updates)
+            
             $updateData = [
                 'status' => $status,
                 'updated_at' => $current_time
