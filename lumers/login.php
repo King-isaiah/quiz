@@ -42,6 +42,7 @@
           <!-- field -->
         </form>
         <div class="link">Not yet signed up?<a href="signUp.php">Signup now</a></div>
+        <div class="link">Forgot Password?<a href="forgetP.php">Forgot Password</a></div>
       </section>
     </div>
     <!-- the above wrapper ends   -->

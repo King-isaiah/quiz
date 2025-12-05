@@ -32,7 +32,7 @@ if(isset($_SESSION['unique_id'])){
             exit();
         } else {
             // The update was successful
-            echo "Status updated to offline.";
+            // echo "Status updated to offline.";
             session_unset();
             session_destroy();           
             // header("location:../../lumers/login.php");
