@@ -1,132 +1,124 @@
-// const form = document.querySelector(".signup form");
-// const continueBtn = document.querySelector(".button input");
-// const successText = form.querySelector(".succes-txt");
-// const errorText = form.querySelector(".error-txt");
-// const loader = document.querySelector(".loader");
-
-// form.onsubmit = (e) => {
-//   e.preventDefault();
-// };
-// continueBtn.onclick = () => {
-    
-//   loader.style.display = "block";
-//   errorText.style.display = "none";
-//   continueBtn.disabled = true;
-//   //   lets start ajax
-//   let xhr = new XMLHttpRequest(); 
-//   xhr.open("POST", "php/signup.php", true);
-//   xhr.onload = () => {
-//     if (xhr.readyState === XMLHttpRequest.DONE) {
-//       if (xhr.status === 200) {
-//         let data = xhr.response;
-//         console.log(data);
-
-//          // Hide loader
-//         loader.style.display = "none";
-//         continueBtn.disabled = false;
-
-
-//         if (data == "success") {
-//           successText.textContent = data;
-//           successText.style.display = "block";
-//           // location.href = "/quiz/lumers/login.html";
-//           location.href = "lumers/login.php";
-//         } else {
-//           errorText.textContent = data;
-//           errorText.style.display = "block";
-//         }
-//       }
-//     }
-//   };
-//   //   we have to send the form data through ajax to php
-//   let formData = new FormData(form); 
-//   xhr.send(formData); //sending the form data to php
-// };
-
-
-
+// Select elements
 const form = document.querySelector(".signup form");
-const continueBtn = document.querySelector(".button input");
-const successText = form.querySelector(".succes-txt");
-const errorText = form.querySelector(".error-txt");
-const fullpageLoader = document.getElementById("fullpageLoader");
+const submitBtn = document.querySelector("#submitBtn");
+const successText = document.querySelector("#successText");
+const errorText = document.querySelector("#errorText");
+const fullpageLoader = document.querySelector("#fullpageLoader");
 
+// Prevent default form submission
 form.onsubmit = (e) => {
   e.preventDefault();
+  submitForm();
 };
 
-continueBtn.onclick = () => {
-  // Show full page loader
-  fullpageLoader.style.display = "flex";
+// Form submission function
+function submitForm() {
+  // Only show loader when form is valid and ready to submit
+  if (!form.checkValidity()) {
+    // Trigger HTML5 validation
+    form.reportValidity();
+    return;
+  }
+
+  // Show loader AFTER form validation passes
+  showLoader();
   
-  // Disable form interactions
-  form.classList.add("form-disabled");
-  continueBtn.disabled = true;
+  // Disable the submit button
+  submitBtn.disabled = true;
   
   // Hide any previous messages
-  errorText.style.display = "none";
-  successText.style.display = "none";
+  hideMessages();
 
   // Start AJAX request
-  let xhr = new XMLHttpRequest(); 
+  let xhr = new XMLHttpRequest();
   xhr.open("POST", "php/signup.php", true);
   
   xhr.onload = () => {
-    // Hide loader first
-    fullpageLoader.style.display = "none";
-    form.classList.remove("form-disabled");
-    continueBtn.disabled = false;
+    // Always hide loader when request completes
+    hideLoader();
+    submitBtn.disabled = false;
 
     if (xhr.readyState === XMLHttpRequest.DONE) {
       if (xhr.status === 200) {
-        let data = xhr.response;
+        let data = xhr.response.trim();
         console.log("Server Response:", data);
 
-        if (data.trim() === "success") {
-          successText.textContent = "Account created successfully!";
-          successText.style.display = "block";
-          successText.style.color = "#34721c";
-          successText.style.background = "#d4edda";
-          successText.style.border = "1px solid #c3e6cb";
-
-          setTimeout(() => {
-            var baseUrl = window.location.origin;
-            location.href = baseUrl + "/lumers/login.php";
-            // location.href = "lumers/login.php";
-          }, 5000);
-         
-        } else { 
-          errorText.textContent = data;
-          errorText.style.display = "block";         
-         
+        if (data === "success") {
+          showSuccess("Account created successfully! Redirecting to login...");
           
+          // Redirect after 2 seconds
+          setTimeout(() => {
+            window.location.href = "login.php";
+          }, 2000);
+        } else {
+          showError(data);
         }
+      } else {
+        showError("Server error occurred. Please try again.");
       }
     }
   };
 
-  // Handle network errors
   xhr.onerror = () => {
-    fullpageLoader.style.display = "none";
-    form.classList.remove("form-disabled");
-    continueBtn.disabled = false;
-    errorText.textContent = "Network error! Please check your connection.";
-    errorText.style.display = "block";
+    hideLoader();
+    submitBtn.disabled = false;
+    showError("Network error! Please check your connection.");
   };
 
-  // Handle timeout
   xhr.ontimeout = () => {
-    fullpageLoader.style.display = "none";
-    form.classList.remove("form-disabled");
-    continueBtn.disabled = false;
-    errorText.textContent = "Request timeout! Please Use a Stronger Connection ndtry again.";
-    errorText.style.display = "block";
+    hideLoader();
+    submitBtn.disabled = false;
+    showError("Request timeout! Please try again.");
   };
 
-  // Set timeout (10 seconds)
+  // Set timeout (40 seconds)
   xhr.timeout = 40000;
   
   // Send form data
-  let formData = new FormData(form); 
+  let formData = new FormData(form);
   xhr.send(formData);
-};
+}
+
+// Helper functions
+function showLoader() {
+  fullpageLoader.style.display = "flex";
+  form.classList.add("form-disabled");
+}
+
+function hideLoader() {
+  fullpageLoader.style.display = "none";
+  form.classList.remove("form-disabled");
+}
+
+function showError(message) {
+  errorText.textContent = message;
+  errorText.style.display = "block";
+  successText.style.display = "none";
+}
+
+function showSuccess(message) {
+  successText.textContent = message;
+  successText.style.display = "block";
+  errorText.style.display = "none";
+}
+
+function hideMessages() {
+  errorText.style.display = "none";
+  successText.style.display = "none";
+}
+
+// Password show/hide functionality (if you have it)
+document.querySelectorAll('.field input[type="password"]').forEach(input => {
+  const eyeIcon = input.nextElementSibling;
+  if (eyeIcon && eyeIcon.classList.contains('fa-eye')) {
+    eyeIcon.addEventListener('click', () => {
+      if (input.type === 'password') {
+        input.type = 'text';
+        eyeIcon.classList.add('active');
+      } else {
+        input.type = 'password';
+        eyeIcon.classList.remove('active');
+      }
+    });
+  }
+});
