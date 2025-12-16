@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumos Foundation - Empowering Dreams Through Education</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/fontawsome.css">
+    <link type="image/x-icon" rel="icon" href="img/logo2.png" />
+</head>
+<body>
+    <!-- Animated Background Elements -->
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+    </div>
+
+    <!-- Particle Canvas -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <!-- <div class="logo-icon"> -->
+                    <img class="logo-icon" src="img/logo1.png" alt="Logo">
+                <!-- </div> -->
+                <span class="logo-text">Lumos Foundation</span>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="#scholarships" class="nav-link">Scholarships</a>
+                <a href="aboutUs.html" class="nav-link">About</a>
+                <a href="#process" class="nav-link active">How It Works</a>
+                <a href="../lumers/signUp.html" class="nav-link">Apply</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="../lumers/signUp.html" style="text-decoration: none; display: inline-block;">
+                    <button class="btn-login" id="loginBtn">
+                        Student Portal
+                        <i class="fas fa-user-graduate" ></i>
+                    </button>
+                </a>
+                
+                <div class="menu-toggle">
+                    <div class="hamburger"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="title-word title-word-1">Igniting</span>
+                    <span class="title-word title-word-2">Brilliance,</span>
+                    <span class="title-word title-word-3">Fueling</span>
+                    <span class="title-word title-word-4">Futures</span>
+                </h1>
+                <p class="hero-subtitle">Transforming dreams into reality through educational opportunities</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number" data-count="1250">0</div>
+                        <div class="stat-label">Scholarships Awarded</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number" data-count="45">0</div>
+                        <div class="stat-label">Countries Reached</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number" data-count="98">0</div>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                </div>
+                <div class="hero-actions">
+                    <button class="btn-primary" id="exploreBtn">
+                        Explore Opportunities
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="btn-secondary" id="watchStory">
+                        <i class="fas fa-play"></i>
+                        Watch Our Story
+                    </button>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="floating-card card-1">
+                    <i class="fas fa-university"></i>
+                    <span>University Grants</span>
+                </div>
+                <div class="floating-card card-2">
+                    <i class="fas fa-book-open"></i>
+                    <span>Research Funds</span>
+                </div>
+                <div class="floating-card card-3">
+                    <i class="fas fa-globe-americas"></i>
+                    <span>Global Programs</span>
+                </div>
+                <div class="main-visual">
+                    <div class="gradient-orb"></div>
+                    <div class="pulse-ring"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="arrow"></div>
+        </div>
+    </section>
+
+  
+
+    <!-- Process Explanation Section -->
+    <section id="process" class="process-section">
+        <div class="container">
+            <h2 class="section-title">How Our Exam Reward Program Works</h2>
+            <p class="section-subtitle">A step-by-step guide to earning rewards through education</p>
+            
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3><i class="fas fa-user-plus"></i> Registration</h3>
+                        <p>Create your student account by signing up with your details. This gives you access to the Lumos learning platform.</p>
+                        <a href="../lumers/signUp.html" class="step-link">Sign Up Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3><i class="fas fa-sign-in-alt"></i> Login & Profile Setup</h3>
+                        <p>After registration, login to your account and complete your profile. Upload necessary documents for verification.</p>
+                        <a href="../lumers/login.php" class="step-link">Login Here <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3><i class="fas fa-clipboard-list"></i> Exam Inventory</h3>
+                        <p>Browse available exams in our inventory. Each exam has specific subjects, difficulty levels, and reward amounts.</p>
+                        <div class="exam-tips">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Tip: Start with beginner level exams to build confidence</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3><i class="fas fa-book-open"></i> Exam Portal & Instructions</h3>
+                        <p>Read all instructions carefully before starting. Each exam has specific rules and time limits.</p>
+                        <div class="important-rules">
+                            <h4>Important Rules:</h4>
+                            <ul>
+                                <li><i class="fas fa-clock"></i> Time limits are strictly enforced</li>
+                                <li><i class="fas fa-ban"></i> No switching tabs during exam</li>
+                                <li><i class="fas fa-pencil-alt"></i> Answer all questions before submitting</li>
+                                <li><i class="fas fa-check-circle"></i> Review answers before final submission</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">05</div>
+                    <div class="step-content">
+                        <h3><i class="fas fa-play-circle"></i> Take the Exam</h3>
+                        <p>Click "Start Exam" when ready. The timer begins immediately. Answer questions carefully and use the review feature.</p>
+                        <div class="exam-features">
+                            <div class="feature">
+                                <i class="fas fa-undo"></i>
+                                <span>Review & Change Answers</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-flag"></i>
+                                <span>Flag Difficult Questions</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-chart-bar"></i>
+                                <span>Progress Tracker</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">06</div>
+                    <div class="step-content">
+                        <h3><i class="fas fa-trophy"></i> Results & Rewards</h3>
+                        <p>View your results immediately after submission. Scores determine reward eligibility. Rewards are processed within 24 hours.</p>
+                        <div class="result-info">
+                            <div class="info-box">
+                                <i class="fas fa-trophy"></i>
+                                <div>
+                                    <strong>Passing Score:</strong> 70% or above
+                                </div>
+                            </div>
+                            <div class="info-box">
+                                <i class="fas fa-gift"></i>
+                                <div>
+                                    <strong>Reward Types:</strong> Cash, Scholarships, Certificates
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">07</div>
+                    <div class="step-content">
+                        <h3><i class="fas fa-chart-line"></i> View Results & Track Progress</h3>
+                        <p>Check your results dashboard for detailed performance analysis. Track your progress across multiple exams.</p>
+                        <div class="dashboard-features">
+                            <p><i class="fas fa-chart-line"></i> Performance analytics</p>
+                            <p><i class="fas fa-medal"></i> Achievement badges</p>
+                            <p><i class="fas fa-history"></i> Exam history</p>
+                            <p><i class="fas fa-calendar"></i> Upcoming exams</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-process">
+                <h3>Ready to Start Earning Rewards?</h3>
+                <p>Join thousands of students who are transforming their futures through our exam reward program</p>
+                <div class="cta-buttons">
+                    <a href="../lumers/signUp.html" class="btn-primary btn-large">
+                        <i class="fas fa-user-plus"></i>
+                        Create Account
+                    </a>
+                    <a href="../lumers/login.php" class="btn-secondary btn-large">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Login to Start
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Timeline -->
+    <section class="timeline-section">
+        <div class="container">
+            <h2 class="section-title">Our Journey</h2>
+            <div class="timeline">
+                <div class="timeline-progress"></div>
+                <div class="timeline-items">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>2025</h3>
+                            <p>Lumers Foundation established with a vision to democratize education</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>2026</h3>
+                            <p>First 100 scholarships awarded to deserving students</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>2027</h3>
+                            <p>Expanded to 25 countries with international programs</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>2028</h3>
+                            <p>Over 1,250 students supported worldwide</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Section -->
+    <section id="apply" class="apply">
+        <div class="container">
+            <div class="apply-content">
+                <div class="apply-text">
+                    <h2 class="section-title">Ready to Transform Your Future?</h2>
+                    <p class="section-subtitle">Join thousands of students who have achieved their academic dreams through Lumos Foundation</p>
+                    
+                    <div class="application-steps">
+                        <div class="step">
+                            <div class="step-number">01</div>
+                            <div class="step-content">
+                                <h4>Create Profile</h4>
+                                <p>Set up your student account</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">02</div>
+                            <div class="step-content">
+                                <h4>Find Programs</h4>
+                                <p>Browse available scholarships Courses</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">03</div>
+                            <div class="step-content">
+                                <h4>Payment</h4>
+                                <p>Pay A small token</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">04</div>
+                            <div class="step-content">
+                                <h4>Apply</h4>
+                                <p>Submit your application</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary btn-large" id="startApplication">
+                        Start Your Application
+                        <i class="fas fa-rocket"></i>
+                    </button>
+                </div>
+                
+                <div class="apply-visual">
+                    <div class="floating-form">
+                        <div class="form-header">
+                            <i class="fas fa-edit"></i>
+                            <h3>Quick Apply</h3>
+                        </div>
+                        <form class="mini-application">
+                            <a href="lumers/signUp.html" style="text-decoration: none; display: inline-block;">
+                                <button type="button" class="btn-primary">
+                                    Get Started
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img class='logo-icon' src="img/logo2.png" />
+                        Lumos Foundation
+                    </div>
+                    <p>Empowering the next generation of leaders through education and opportunity.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="../lumers/signUp.html">Scholarships</a>
+                    <a href="aboutUs.html">About Us</a>
+                    <a href="#process">How It Works</a>
+                    <a href="../lumers/signUp.html">Apply Now</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Programs</h4>
+                    <a href="#">Undergraduate</a>
+                    <a href="#">Graduate</a>
+                    <a href="#">Research</a>
+                    <a href="#">International</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Education Ave, City</p>
+                    <p><i class="fas fa-phone"></i> 09069318837</p>
+                    <p><i class="fas fa-envelope"></i> info@lumosfoundation.org</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Lumos Foundation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

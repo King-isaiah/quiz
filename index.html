@@ -3,114 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumos Foundation - Empowering Dreams Through Education</title>
+    <title>Lumos - Empowering Youth Through Education & Opportunities</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="website/css/styles.css">
-    <link rel="stylesheet" href="website/css/fontawsome.css">
-    <link type="image/x-icon" rel="icon" href="img/logo2.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="website/css/main.css">
+    <link type="image/x-icon" rel="icon" href="img/logo2.png">
 </head>
 <body>
-    <!-- Animated Background Elements -->
-    <div class="floating-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-        <div class="shape shape-4"></div>
-        <div class="shape shape-5"></div>
-    </div>
-
-    <!-- Particle Canvas -->
-    <canvas id="particleCanvas"></canvas>
-
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <div class="logo-icon">
-                    <i class="fas fa-graduation-cap"></i>
-                </div>
-                <span class="logo-text">Lumos Foundation</span>
+                <img src="img/logo1.png" alt="Lumos Logo" class="logo-img">
+                <span class="logo-text">LUMOS</span>
             </div>
             
             <div class="nav-menu">
-                <a href="index.html" class="nav-link active">Home</a>
-                <a href="#scholarships" class="nav-link">Scholarships</a>
-                <a href="aboutUs.html" class="nav-link">About</a>
-                <a href="lumers/signUp.html" class="nav-link">Apply</a>
-                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#empowerment" class="nav-link">Our Programs</a>
+                <a href="#team" class="nav-link">Our Team</a>
+                <a href="#testimonials" class="nav-link">Testimonials</a>
+                <a href="#mission" class="nav-link">Our Mission</a>
+                <a href="website/exam-reward.html" class="nav-link btn-cta">Reward-Program</a>
             </div>
-
-            <div class="nav-actions">
-                <a href="lumers/signUp.html" style="text-decoration: none; display: inline-block;">
-                    <button class="btn-login" id="loginBtn">
-                        Student Portal
-                        <i class="fas fa-user-graduate"></i>
-                    </button>
-                    
-                </a>
-                
-                <div class="menu-toggle">
-                    <div class="hamburger"></div>
-                </div>
+            
+            <div class="menu-toggle">
+                <div class="hamburger"></div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
+    <!-- Hero Section with Video Background -->
+    <section id="home" class="hero-section">
+        <div class="video-container">
+            <video autoplay muted loop playsinline class="bg-video">
+                <source src="website/videos/tyla.mp4" type="video/mp4">
+                <!-- Fallback image if video doesn't load -->
+                <img src="img/hero-fallback.jpg" alt="Hero background">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+        
         <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">
-                    <span class="title-word title-word-1">Igniting</span>
-                    <span class="title-word title-word-2">Brilliance,</span>
-                    <span class="title-word title-word-3">Fueling</span>
-                    <span class="title-word title-word-4">Futures</span>
-                </h1>
-                <p class="hero-subtitle">Transforming dreams into reality through educational opportunities</p>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <div class="stat-number" data-count="1250">0</div>
-                        <div class="stat-label">Scholarships Awarded</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number" data-count="45">0</div>
-                        <div class="stat-label">Countries Reached</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number" data-count="98">0</div>
-                        <div class="stat-label">Success Rate</div>
-                    </div>
-                </div>
-                <div class="hero-actions">
-                    <button class="btn-primary" id="exploreBtn">
-                        Explore Opportunities
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                    <button class="btn-secondary" id="watchStory">
-                        <i class="fas fa-play"></i>
-                        Watch Our Story
-                    </button>
-                </div>
-            </div>
-            
-            <div class="hero-visual">
-                <div class="floating-card card-1">
-                    <i class="fas fa-university"></i>
-                    <span>University Grants</span>
-                </div>
-                <div class="floating-card card-2">
-                    <i class="fas fa-book-open"></i>
-                    <span>Research Funds</span>
-                </div>
-                <div class="floating-card card-3">
-                    <i class="fas fa-globe-americas"></i>
-                    <span>Global Programs</span>
-                </div>
-                <div class="main-visual">
-                    <div class="gradient-orb"></div>
-                    <div class="pulse-ring"></div>
-                </div>
+            <h1 class="hero-title">
+                <span class="title-line">Igniting</span>
+                <span class="title-line">Youth</span>
+                <span class="title-line">Potential</span>
+            </h1>
+            <p class="hero-subtitle">Empowering the next generation through education, skills, and opportunity</p>
+            <div class="hero-buttons">
+                <a href="#empowerment" class="btn-primary">
+                    Explore Programs
+                    <i class="fas fa-arrow-down"></i>
+                </a>
+                <a href="website/exam-reward.html" class="btn-secondary">
+                    Start Exam Journey
+                    <i class="fas fa-graduation-cap"></i>
+                </a>
             </div>
         </div>
         
@@ -118,187 +67,249 @@
             <div class="mouse">
                 <div class="wheel"></div>
             </div>
-            <div class="arrow"></div>
         </div>
     </section>
 
-    <!-- Scholarships Section -->
-    <section id="scholarships" class="scholarships">
-        <div class="container">
-            <h2 class="section-title">Available Scholarships</h2>
-            <p class="section-subtitle">Find the perfect opportunity to fuel your academic journey</p>
-            
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">All Programs</button>
-                <button class="filter-btn" data-filter="undergraduate">Undergraduate</button>
-                <button class="filter-btn" data-filter="graduate">Graduate</button>
-                <button class="filter-btn" data-filter="research">Research</button>
-                <button class="filter-btn" data-filter="international">International</button>
-            </div>
-            
-            <div class="scholarships-grid" id="scholarshipsGrid">
-                <!-- Scholarships will be loaded dynamically -->
-            </div>
+    <!-- Empowerment Programs Section -->
+    <section id="empowerment" class="section programs-section">
+        <div class="section-header">
+            <h2 class="section-title">Our Empowerment Programs</h2>
+            <p class="section-subtitle">Building skills, creating opportunities, transforming lives</p>
         </div>
-    </section>
-
-    <!-- Interactive Timeline -->
-    <section class="timeline-section">
-        <div class="container">
-            <h2 class="section-title">Our Journey</h2>
-            <div class="timeline">
-                <div class="timeline-progress"></div>
-                <div class="timeline-items">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h3>2025</h3>
-                            <p>Lumers Foundation established with a vision to democratize education</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h3>2026</h3>
-                            <p>First 100 scholarships awarded to deserving students</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h3>2027</h3>
-                            <p>Expanded to 25 countries with international programs</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h3>2028</h3>
-                            <p>Over 1,250 students supported worldwide</p>
-                        </div>
-                    </div>
+        
+        <div class="programs-container">
+            <div class="program-card">
+                <div class="program-icon">
+                    <i class="fas fa-book-reader"></i>
                 </div>
+                <h3>Reading for Rewards</h3>
+                <p>Develop reading skills while earning rewards for your progress and comprehension.</p>
+                <a href="website/exam-reward.html" class="program-link">Start Reading →</a>
+            </div>
+            
+            <div class="program-card">
+                <div class="program-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3>Digital Skills Training</h3>
+                <p>Learn essential digital skills for the 21st century workplace and entrepreneurship.</p>
+                <a href="#" class="program-link">Coming Soon →</a>
+            </div>
+            
+            <div class="program-card">
+                <div class="program-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Leadership Development</h3>
+                <p>Build leadership qualities through mentorship programs and community projects.</p>
+                <a href="#" class="program-link">Coming Soon →</a>
+            </div>
+            
+            <div class="program-card">
+                <div class="program-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h3>Career Guidance</h3>
+                <p>Get personalized career counseling and internship opportunities.</p>
+                <a href="#" class="program-link">Coming Soon →</a>
             </div>
         </div>
     </section>
 
-    <!-- Application Section -->
-    <section id="apply" class="apply">
-        <div class="container">
-            <div class="apply-content">
-                <div class="apply-text">
-                    <h2 class="section-title">Ready to Transform Your Future?</h2>
-                    <p class="section-subtitle">Join thousands of students who have achieved their academic dreams through Lumos Foundation</p>
-                    
-                    <div class="application-steps">
-                        <div class="step">
-                            <div class="step-number">01</div>
-                            <div class="step-content">
-                                <h4>Create Profile</h4>
-                                <p>Set up your student account</p>
-                            </div>
-                        </div>
-                        <div class="step">
-                            <div class="step-number">02</div>
-                            <div class="step-content">
-                                <h4>Find Programs</h4>
-                                <p>Browse available scholarships Courses</p>
-                            </div>
-                        </div>
-                        <div class="step">
-                            <div class="step-number">03</div>
-                            <div class="step-content">
-                                <h4>Payment</h4>
-                                <p>Pay A smll token</p>
-                            </div>
-                        </div>
-                        <div class="step">
-                            <div class="step-number">04</div>
-                            <div class="step-content">
-                                <h4>Apply</h4>
-                                <p>Submit your application</p>
-                            </div>
-                        </div>
+    <!-- Team Section with Video Background -->
+    <section id="team" class="section team-section">
+        <div class="video-container">
+            <video autoplay muted loop playsinline class="bg-video">
+                <!-- <source src="videos/team-bg.mp4" type="video/mp4"> -->
+                <img src="img/team-fallback.jpg" alt="Team background">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+        
+        <div class="section-content">
+            <div class="section-header">
+                <h2 class="section-title">Meet Our Team</h2>
+                <p class="section-subtitle">Dedicated professionals committed to youth empowerment</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-img">
+                        <img src="website/img/shiks.png" alt="Team Member">
                     </div>
-                    
-                    <button class="btn-primary btn-large" id="startApplication">
-                        Start Your Application
-                        <i class="fas fa-rocket"></i>
-                    </button>
+                    <h3>Shiks Ogoshe</h3>
+                    <p class="member-role">Founder & CEO</p>
+                    <p class="member-bio">Education specialist with 15+ years in youth development</p>
                 </div>
                 
-                <div class="apply-visual">
-                    <div class="floating-form">
-                        <div class="form-header">
-                            <i class="fas fa-edit"></i>
-                            <h3>Quick Apply</h3>
-                        </div>
-                        <form class="mini-application">
-                           
-                            <a href="lumers/signUp.html" style="text-decoration: none; display: inline-block;">
-                                <button type="button" class="btn-primary">
-                                    Get Started
-                                    <i class="fas fa-paper-plane"></i>
-                                </button>
-                            </a>
-                        </form>
+                <div class="team-member">
+                    <div class="member-img">
+                        <img src="website/img/9se.jpg" alt="Team Member">
+                    </div>
+                    <h3>Bimbe Oluwafumi</h3>
+                    <p class="member-role">Program Director</p>
+                    <p class="member-bio">Expert in digital education and skill development</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-img">
+                        <img src="website/img/simba.png" alt="Team Member">
+                    </div>
+                    <h3>Afuwape Eshiozemhe Oluwatosin</h3>
+                    <p class="member-role">Software Developer</p>
+                    <p class="member-bio">Mid experts in what he is doing dont ask a moving as i can</p>
+                </div>
+
+
+                <div class="team-member">
+                    <div class="member-img">
+                        <img src="website/img/shiks.png" alt="Team Member">
+                    </div>
+                    <h3>Shettima Justice</h3>
+                    <p class="member-role">Community Outreach</p>
+                    <p class="member-bio">Passionate about creating equal opportunities for all</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section testimonials-section">
+        <div class="section-header">
+            <h2 class="section-title">Youth Success Stories</h2>
+            <p class="section-subtitle">Hear from the youths we've empowered</p>
+        </div>
+        
+        <div class="testimonials-container">
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <p>"Lumos changed my life. The reading program helped me improve my skills and earn rewards that paid for my college application fees."</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="website/img/9se.jpg" alt="Testimonial">
+                    <div>
+                        <h4>James Rodriguez</h4>
+                        <p>Medical Student</p>
                     </div>
                 </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <p>"Through Lumos, I gained digital skills that helped me start my own online business while still in secondary school."</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="website/img/eye.png" alt="Testimonial">
+                    <div>
+                        <h4>Fatima Al-Mansoor</h4>
+                        <p>Young Entrepreneur</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <p>"The leadership program gave me confidence and skills to start a community recycling project in my neighborhood."</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="website/img/loreta.png" alt="Testimonial">
+                    <div>
+                        <h4>David Okafor</h4>
+                        <p>Community Leader</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section with Video -->
+    <section id="mission" class="section mission-section">
+        <div class="video-container">
+            <video autoplay muted loop playsinline class="bg-video">
+                <source src="website/videos/tyla.mp4" type="video/mp4">
+                <img src="img/mission-fallback.jpg" alt="Mission background">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+        
+        <!-- <div class="section-content"> 
+        </div> -->
+        <div class="mission-grid">
+                <div class="mission-card">
+                    <h2>Our Mission</h2>
+                    <p>To empower youth from all backgrounds by providing access to quality education, essential skills training, and rewarding opportunities that transform potential into achievement.</p>
+                </div>
+                
+                <div class="mission-card">
+                    <h2>Our Vision</h2>
+                    <p>A world where every young person has the tools, skills, and opportunities to reach their full potential and contribute positively to their communities.</p>
+                </div>
+                
+            <div class="mission-card">
+                <h2>Our Values</h2>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Empowerment through Education</li>
+                    <li><i class="fas fa-check-circle"></i> Equal Opportunities</li>
+                    <li><i class="fas fa-check-circle"></i> Innovation & Growth</li>
+                    <li><i class="fas fa-check-circle"></i> Community Impact</li>
+                </ul>
+            </div>
+
+            <div class="cta-container">
+                <h3>Ready to Start Your Empowerment Journey?</h3>
+                <p>Join thousands of youths who have transformed their lives through our programs</p>
+                <a href="website/exam-reward.html" class="btn-primary btn-large">
+                    Begin with Exam Rewards
+                    <i class="fas fa-rocket"></i>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <i class="fas fa-graduation-cap"></i>
-                        Lumos Foundation
-                    </div>
-                    <p>Empowering the next generation of leaders through education and opportunity.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Quick Links Testing out spmestuffs to see if all goes well and can push at will</h4>
-                    <a href="lumers/signUp.html">Scholarships</a>
-                    <a href="aboutUs.html">About Us</a>
-                    <a href="lumers/signUp.html">Apply Now</a>
-                    <a href="lumers/signUp.html">Contact</a>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Programs</h4>
-                    <a href="#">Undergraduate</a>
-                    <a href="#">Graduate</a>
-                    <a href="#">Research</a>
-                    <a href="#">International</a>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <p><i class="fas fa-map-marker-alt"></i> 123 Education Ave, no ask mee City</p>
-                    <p><i class="fas fa-phone"></i> 09069318837</p>
-                    <p><i class="fas fa-envelope"></i> info@lumosfoundation.org</p>
-                </div>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="img/logo1.png" alt="Lumos Logo">
+                <span>LUMOS</span>
+                <p>Empowering Youth, Building Futures</p>
             </div>
             
-            <div class="footer-bottom">
-                <p>&copy; 2025 Lumos Foundation. All rights reserved. and testing to see whast popin dont make noise yet</p>
+            <div class="footer-links">
+                <div class="link-group">
+                    <h4>Programs</h4>
+                    <a href="website/exam-reward.html">Exam Rewards</a>
+                    <a href="#">Skills Training</a>
+                    <a href="#">Leadership</a>
+                    <a href="#">Career Guidance</a>
+                </div>
+                
+                <div class="link-group">
+                    <h4>About</h4>
+                    <a href="#team">Our Team</a>
+                    <a href="#mission">Our Mission</a>
+                    <a href="#testimonials">Success Stories</a>
+                    <a href="#">Partners</a>
+                </div>
+                
+                <div class="link-group">
+                    <h4>Connect</h4>
+                    <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+                    <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+                    <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                </div>
             </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Lumos Youth Empowerment. All rights reserved.</p>
+            <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
         </div>
     </footer>
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="website/js/jquery.min.js"></script>
-    <script src="website/js/script.js"></script>
+    <script src="website/js/main.js"></script>
 </body>
 </html>

@@ -89,10 +89,85 @@ class ParticleSystem {
     }
 }
 
+// Process Animations Class
+class ProcessAnimations {
+    constructor() {
+        this.init();
+    }
+    
+    init() {
+        this.animateProcessSteps();
+        this.setupStepHoverEffects();
+        this.setupStepClickEffects();
+    }
+    
+    animateProcessSteps() {
+        const steps = document.querySelectorAll('.process-step');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('animate-step');
+                    }, index * 200);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        steps.forEach(step => {
+            observer.observe(step);
+        });
+    }
+    
+    setupStepHoverEffects() {
+        const stepContents = document.querySelectorAll('.step-content');
+        
+        stepContents.forEach(content => {
+            content.addEventListener('mouseenter', () => {
+                const step = content.closest('.process-step');
+                const stepNumber = step.querySelector('.step-number');
+                
+                stepNumber.style.transform = 'scale(1.1) rotate(5deg)';
+                stepNumber.style.boxShadow = 'var(--shadow-hover)';
+            });
+            
+            content.addEventListener('mouseleave', () => {
+                const step = content.closest('.process-step');
+                const stepNumber = step.querySelector('.step-number');
+                
+                stepNumber.style.transform = 'scale(1) rotate(0)';
+                stepNumber.style.boxShadow = 'var(--shadow)';
+            });
+        });
+    }
+    
+    setupStepClickEffects() {
+        const stepLinks = document.querySelectorAll('.step-link');
+        
+        stepLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const href = link.getAttribute('href');
+                
+                // Add click animation
+                link.style.transform = 'scale(0.95)';
+                
+                setTimeout(() => {
+                    link.style.transform = 'scale(1)';
+                    if (href) {
+                        window.location.href = href;
+                    }
+                }, 150);
+            });
+        });
+    }
+}
+
 // Main Application
 class LumersFoundation {
     constructor() {
         this.particleSystem = new ParticleSystem();
+        this.processAnimations = new ProcessAnimations();
         this.scholarships = [];
         this.init();
     }
@@ -102,30 +177,45 @@ class LumersFoundation {
         this.loadScholarships();
         this.setupAnimations();
         this.setupScrollEffects();
+        this.setupMobileMenu();
+        this.setupNavigation();
     }
     
     setupEventListeners() {
         // Navigation
-        // the navigationthat makes use of the scroll function in around line 290
-        // document.querySelectorAll('.nav-link').forEach(link => {
-        //     link.addEventListener('click', (e) => {
-        //         e.preventDefault();
-        //         this.scrollToSection(link.getAttribute('href'));
-        //     });
-        // });
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const href = link.getAttribute('href');
+                if (href.startsWith('#')) {
+                    this.scrollToSection(href);
+                } else {
+                    window.location.href = href;
+                }
+            });
+        });
         
         // Buttons
-        document.getElementById('exploreBtn').addEventListener('click', () => {
-            this.scrollToSection('#scholarships');
-        });
+        const exploreBtn = document.getElementById('exploreBtn');
+        if (exploreBtn) {
+            exploreBtn.addEventListener('click', () => {
+                this.scrollToSection('#scholarships');
+            });
+        }
         
-        document.getElementById('startApplication').addEventListener('click', () => {
-            this.showApplicationModal();
-        });
+        const startApplicationBtn = document.getElementById('startApplication');
+        if (startApplicationBtn) {
+            startApplicationBtn.addEventListener('click', () => {
+                this.showApplicationModal();
+            });
+        }
         
-        // document.getElementById('loginBtn').addEventListener('click', () => {
-        //     // this.showLoginModal();
-        // });
+        const watchStoryBtn = document.getElementById('watchStory');
+        if (watchStoryBtn) {
+            watchStoryBtn.addEventListener('click', () => {
+                this.showStoryModal();
+            });
+        }
         
         // Filter buttons
         document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -137,9 +227,90 @@ class LumersFoundation {
         });
         
         // Form submission
-        document.querySelector('.mini-application').addEventListener('submit', (e) => {
-            e.preventDefault();
-            this.handleQuickApply(e.target);
+        const miniApplicationForm = document.querySelector('.mini-application');
+        if (miniApplicationForm) {
+            miniApplicationForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                this.handleQuickApply(e.target);
+            });
+        }
+        
+        // Login button
+        const loginBtn = document.getElementById('loginBtn');
+        if (loginBtn) {
+            loginBtn.addEventListener('click', () => {
+                window.location.href = 'lumers/login.php';
+            });
+        }
+    }
+    
+    setupMobileMenu() {
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                    navMenu.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                }
+            });
+        }
+    }
+    
+    setupNavigation() {
+        const navbar = document.querySelector('.navbar');
+        let lastScrollY = window.scrollY;
+        
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            
+            // Navbar background
+            if (scrollY > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+            
+            // Update active nav link
+            this.updateActiveNavLink();
+            
+            lastScrollY = scrollY;
+        });
+        
+        // Set initial active link
+        this.updateActiveNavLink();
+    }
+    
+    updateActiveNavLink() {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        let current = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            const sectionHeight = section.clientHeight;
+            
+            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            const href = link.getAttribute('href');
+            if (href === `#${current}` || (current === '' && href === '#home')) {
+                link.classList.add('active');
+            }
         });
     }
     
@@ -165,17 +336,7 @@ class LumersFoundation {
         let lastScrollY = window.scrollY;
         
         window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
             const scrollY = window.scrollY;
-            
-            // Navbar background
-            if (scrollY > 100) {
-                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-                navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
-            } else {
-                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-                navbar.style.boxShadow = 'none';
-            }
             
             // Parallax effects
             document.querySelectorAll('.floating-card').forEach((card, index) => {
@@ -263,6 +424,8 @@ class LumersFoundation {
     
     renderScholarships(filter = 'all') {
         const grid = document.getElementById('scholarshipsGrid');
+        if (!grid) return;
+        
         const filtered = filter === 'all' 
             ? this.scholarships 
             : this.scholarships.filter(s => s.type === filter);
@@ -291,8 +454,6 @@ class LumersFoundation {
     filterScholarships(type) {
         this.renderScholarships(type);
     }
-
-    // this is normally for the scrolling down to a particular seciotn of the website so use if you want to 
     
     scrollToSection(sectionId) {
         const element = document.querySelector(sectionId);
@@ -302,6 +463,11 @@ class LumersFoundation {
                 top: offsetTop,
                 behavior: 'smooth'
             });
+            
+            // Update active nav link
+            setTimeout(() => {
+                this.updateActiveNavLink();
+            }, 500);
         }
     }
     
@@ -354,40 +520,33 @@ class LumersFoundation {
         document.body.insertAdjacentHTML('beforeend', modalHTML);
         
         // Add event listeners
-        document.querySelector('.modal-close').addEventListener('click', this.closeModal);
+        document.querySelector('.modal-close').addEventListener('click', () => this.closeModal());
         document.querySelector('.modal-overlay').addEventListener('click', (e) => {
             if (e.target.classList.contains('modal-overlay')) this.closeModal();
         });
         
-        document.querySelector('.application-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            this.submitApplication(e.target);
-        });
+        const form = document.querySelector('.application-form');
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                this.submitApplication(form);
+            });
+        }
     }
     
-    showLoginModal() {
+    showStoryModal() {
         const modalHTML = `
             <div class="modal-overlay">
-                <div class="modal-content">
+                <div class="modal-content modal-video">
                     <div class="modal-header">
-                        <h3>Student Portal Login</h3>
+                        <h3>Our Story</h3>
                         <button class="modal-close">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <form class="login-form">
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input type="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input type="password" required>
-                            </div>
-                            <button type="submit" class="btn-primary btn-large">
-                                Sign In
-                                <i class="fas fa-sign-in-alt"></i>
-                            </button>
-                        </form>
+                        <div class="video-placeholder">
+                            <i class="fas fa-play-circle"></i>
+                            <p>Watch our inspiring journey of empowering youth</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -395,7 +554,7 @@ class LumersFoundation {
         
         document.body.insertAdjacentHTML('beforeend', modalHTML);
         
-        document.querySelector('.modal-close').addEventListener('click', this.closeModal);
+        document.querySelector('.modal-close').addEventListener('click', () => this.closeModal());
         document.querySelector('.modal-overlay').addEventListener('click', (e) => {
             if (e.target.classList.contains('modal-overlay')) this.closeModal();
         });
@@ -452,8 +611,9 @@ class LumersFoundation {
     }
 }
 
-// Additional CSS for modals and notifications
+// Additional CSS for modals, notifications, and animations
 const additionalCSS = `
+    /* Modal Styles */
     .modal-overlay {
         position: fixed;
         top: 0;
@@ -477,6 +637,23 @@ const additionalCSS = `
         max-height: 90vh;
         overflow-y: auto;
         animation: slideUp 0.3s ease;
+    }
+    
+    .modal-video {
+        max-width: 800px;
+    }
+    
+    .video-placeholder {
+        text-align: center;
+        padding: 3rem;
+        background: var(--background-alt);
+        border-radius: 15px;
+    }
+    
+    .video-placeholder i {
+        font-size: 4rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
     }
     
     .modal-header {
@@ -523,6 +700,7 @@ const additionalCSS = `
         box-shadow: 0 0 0 3px rgba(144, 238, 144, 0.1);
     }
     
+    /* Notification Styles */
     .notification {
         position: fixed;
         top: 100px;
@@ -555,6 +733,7 @@ const additionalCSS = `
         color: #27ae60;
     }
     
+    /* Animation Keyframes */
     @keyframes fadeIn {
         from { opacity: 0; }
         to { opacity: 1; }
@@ -576,6 +755,7 @@ const additionalCSS = `
         to { opacity: 0; }
     }
     
+    /* Scroll Animations */
     .scholarship-card,
     .timeline-item,
     .step {
@@ -590,6 +770,51 @@ const additionalCSS = `
         opacity: 1;
         transform: translateY(0);
     }
+    
+    /* Mobile Menu Animation */
+    .menu-toggle.active .hamburger {
+        background: transparent;
+    }
+    
+    .menu-toggle.active .hamburger::before {
+        transform: rotate(45deg);
+        top: 0;
+    }
+    
+    .menu-toggle.active .hamburger::after {
+        transform: rotate(-45deg);
+        bottom: 0;
+    }
+    
+    /* Hover Effects */
+    .scholarship-card,
+    .floating-card,
+    .step-content {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .scholarship-card::after,
+    .floating-card::after,
+    .step-content::after {
+        content: '';
+        position: absolute;
+        top: var(--mouse-y, 50%);
+        left: var(--mouse-x, 50%);
+        width: 100px;
+        height: 100px;
+        background: radial-gradient(circle, rgba(144, 238, 144, 0.1) 0%, transparent 70%);
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+    }
+    
+    .scholarship-card:hover::after,
+    .floating-card:hover::after,
+    .step-content:hover::after {
+        opacity: 1;
+    }
 `;
 
 // Inject additional CSS
@@ -600,11 +825,11 @@ document.head.appendChild(style);
 // Initialize application
 const lumersFoundation = new LumersFoundation();
 
-// Add some interactive effects
+// Add global interactive effects
 document.addEventListener('DOMContentLoaded', () => {
-    // Add hover effects to cards
+    // Add mouse move effects for cards
     document.addEventListener('mousemove', (e) => {
-        const cards = document.querySelectorAll('.scholarship-card, .floating-card');
+        const cards = document.querySelectorAll('.scholarship-card, .floating-card, .step-content');
         cards.forEach(card => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
@@ -615,35 +840,53 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // Add CSS for mouse follow effect
-    const mouseFollowCSS = `
-        .scholarship-card,
-        .floating-card {
-            position: relative;
-            overflow: hidden;
+    // Add smooth scroll to all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href !== '#') {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+        });
+    });
+    
+    // Add loading animation for buttons
+    document.querySelectorAll('.btn-primary, .btn-secondary').forEach(button => {
+        button.addEventListener('click', function() {
+            if (!this.classList.contains('loading')) {
+                this.classList.add('loading');
+                const originalHTML = this.innerHTML;
+                this.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Loading...`;
+                
+                // Reset after 2 seconds (simulate loading)
+                setTimeout(() => {
+                    this.classList.remove('loading');
+                    this.innerHTML = originalHTML;
+                }, 2000);
+            }
+        });
+    });
+    
+    // Add CSS for loading buttons
+    const buttonStyles = `
+        .btn-primary.loading,
+        .btn-secondary.loading {
+            pointer-events: none;
+            opacity: 0.8;
         }
         
-        .scholarship-card::after,
-        .floating-card::after {
-            content: '';
-            position: absolute;
-            top: var(--mouse-y, 50%);
-            left: var(--mouse-x, 50%);
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle, rgba(144, 238, 144, 0.1) 0%, transparent 70%);
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .scholarship-card:hover::after,
-        .floating-card:hover::after {
-            opacity: 1;
+        .fa-spinner {
+            margin-right: 0.5rem;
         }
     `;
-    
-    const mouseStyle = document.createElement('style');
-    mouseStyle.textContent = mouseFollowCSS;
-    document.head.appendChild(mouseStyle);
+    const buttonStyle = document.createElement('style');
+    buttonStyle.textContent = buttonStyles;
+    document.head.appendChild(buttonStyle);
 });
