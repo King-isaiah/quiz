@@ -1,0 +1,26 @@
+# quiz/lumers/.gitignore
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Sensitive data
+/config/*
+!/quiz/quiz-config.php
+
+# PHPMailer cache
+/vendor/
+/composer.lock
+
+# Logs
+*.log
+/logs/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+/temp/
+/tmp/
